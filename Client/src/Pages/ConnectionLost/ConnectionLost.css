@@ -1,0 +1,269 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+#Connection-Lost-Main{
+    height: 100vh;
+    width: 100%;
+}
+
+@keyframes Connection-Lost-Eye{
+    0%{
+        box-shadow: 3em -9em #47a8b5;
+    }
+    5%{
+        box-shadow: 0 0 0 0 #47a8b5;
+    }
+    50%{
+        box-shadow: 0em 0em #47a8b5;
+    }
+}
+
+@keyframes Connection-Lost-Mouth{
+    0%{
+        box-shadow: 6em -4em #47a8b5, 7em -4em #47a8b5, 8em -4em #47a8b5;
+    }
+    50%{
+        box-shadow: 5em -3em #47a8b5, 6em -3em #47a8b5, 7em -3em #47a8b5,
+        8em -3em #47a8b5;
+    }
+}
+
+@keyframes Connection-Lost-Comets{
+    0%{
+        box-shadow: -23em -23em #47a8b5, -20em -20em #47a8b5, -18em -18em #47a8b5,
+        -17em -17em #47a8b5, -16em -16em #47a8b5, -15em -15em #47a8b5,
+        -13em -14em #47a8b5, -12em -14em #47a8b5, -11em -14em #47a8b5,
+        -14em -13em #47a8b5, -13em -13em #47a8b5, -12em -13em #47a8b5,
+        -11em -13em #47a8b5, -10em -13em #47a8b5, -14em -12em #47a8b5,
+        -13em -12em #47a8b5, -11em -12em #47a8b5, -10em -12em #47a8b5,
+        -14em -11em #47a8b5, -13em -11em #47a8b5, -12em -11em #47a8b5,
+        -11em -11em #47a8b5, -10em -11em #47a8b5, -13em -10em #47a8b5,
+        -12em -10em #47a8b5, -11em -10em #47a8b5, -9em -19em #47a8b5,
+        -8em -18em #47a8b5, -7em -17em #47a8b5, -6em -16em #47a8b5,
+        -5em -16em #47a8b5, -6em -15em #47a8b5, -5em -15em #47a8b5;
+    }
+    33%{
+        box-shadow: -24em -24em #47a8b5, -21em -21em #47a8b5, -18em -18em #47a8b5,
+        -17em -17em #47a8b5, -16em -16em #47a8b5, -15em -15em #47a8b5,
+        -13em -14em #47a8b5, -12em -14em #47a8b5, -11em -14em #47a8b5,
+        -14em -13em #47a8b5, -13em -13em #47a8b5, -12em -13em #47a8b5,
+        -11em -13em #47a8b5, -10em -13em #47a8b5, -14em -12em #47a8b5,
+        -13em -12em #47a8b5, -11em -12em #47a8b5, -10em -12em #47a8b5,
+        -14em -11em #47a8b5, -13em -11em #47a8b5, -12em -11em #47a8b5,
+        -11em -11em #47a8b5, -10em -11em #47a8b5, -13em -10em #47a8b5,
+        -12em -10em #47a8b5, -11em -10em #47a8b5, -10em -20em #47a8b5,
+        -9em -19em #47a8b5, -8em -18em #47a8b5, -7em -17em #47a8b5,
+        -6em -16em #47a8b5, -5em -16em #47a8b5, -6em -15em #47a8b5,
+        -5em -15em #47a8b5;
+    }
+    66%{
+        box-shadow: -26em -26em #47a8b5, -22em -22em #47a8b5, -18em -18em #47a8b5,
+        -17em -17em #47a8b5, -16em -16em #47a8b5, -15em -15em #47a8b5,
+        -13em -14em #47a8b5, -12em -14em #47a8b5, -11em -14em #47a8b5,
+        -14em -13em #47a8b5, -13em -13em #47a8b5, -12em -13em #47a8b5,
+        -11em -13em #47a8b5, -10em -13em #47a8b5, -14em -12em #47a8b5,
+        -13em -12em #47a8b5, -11em -12em #47a8b5, -10em -12em #47a8b5,
+        -14em -11em #47a8b5, -13em -11em #47a8b5, -12em -11em #47a8b5,
+        -11em -11em #47a8b5, -10em -11em #47a8b5, -13em -10em #47a8b5,
+        -12em -10em #47a8b5, -11em -10em #47a8b5, -11em -21em #47a8b5,
+        -9em -19em #47a8b5, -8em -18em #47a8b5, -7em -17em #47a8b5,
+        -6em -16em #47a8b5, -5em -16em #47a8b5, -6em -15em #47a8b5,
+        -5em -15em #47a8b5;
+    }
+}
+
+@keyframes Connection-Lost-Ground{
+    0%{
+        box-shadow: -12em 6em #47a8b5, -11em 6em #47a8b5, -10em 6em #47a8b5,
+        -9em 6em #47a8b5, -8em 6em #47a8b5, -7em 6em #47a8b5, -6em 6em #47a8b5,
+        4em 6em #47a8b5, 5em 6em #47a8b5, 6em 6em #47a8b5, 7em 6em #47a8b5,
+        8em 6em #47a8b5, 9em 6em #47a8b5, 10em 6em #47a8b5, 11em 6em #47a8b5,
+        12em 6em #47a8b5, 8em 8em #47a8b5, 9em 8em #47a8b5, 10em 8em #47a8b5,
+        -7em 9em #47a8b5, -6em 9em #47a8b5, 6em 10em #47a8b5, 7em 10em #47a8b5,
+        -10em 11em #47a8b5, -9em 11em #47a8b5;
+    }
+    15%{
+        box-shadow: -12em 6em #47a8b5, -11em 6em #47a8b5, -10em 6em #47a8b5,
+        -9em 6em #47a8b5, -8em 6em #47a8b5, -7em 6em #47a8b5, -6em 6em #47a8b5,
+        4em 6em #47a8b5, 5em 6em #47a8b5, 6em 6em #47a8b5, 7em 6em #47a8b5,
+        8em 6em #47a8b5, 9em 6em #47a8b5, 10em 6em #47a8b5, 11em 6em #47a8b5,
+        12em 6em #47a8b5, 4em 8em #47a8b5, 5em 8em #47a8b5, 6em 8em #47a8b5,
+        -12em 9em #47a8b5, -11em 9em #47a8b5, 2em 10em #47a8b5, 3em 10em #47a8b5,
+        10em 11em #47a8b5, 11em 11em #47a8b5;
+    }
+    30%{
+        box-shadow: -12em 6em #47a8b5, -11em 6em #47a8b5, -10em 6em #47a8b5,
+        -9em 6em #47a8b5, -8em 6em #47a8b5, -7em 6em #47a8b5, -6em 6em #47a8b5,
+        4em 6em #47a8b5, 5em 6em #47a8b5, 6em 6em #47a8b5, 7em 6em #47a8b5,
+        8em 6em #47a8b5, 9em 6em #47a8b5, 10em 6em #47a8b5, 11em 6em #47a8b5,
+        12em 6em #47a8b5, 0em 8em #47a8b5, 1em 8em #47a8b5, 2em 8em #47a8b5,
+        8em 9em #47a8b5, 9em 9em #47a8b5, -2em 10em #47a8b5, -1em 10em #47a8b5,
+        6em 11em #47a8b5, 7em 11em #47a8b5;
+    }
+    45%{
+        box-shadow: -12em 6em #47a8b5, -11em 6em #47a8b5, -10em 6em #47a8b5,
+        -9em 6em #47a8b5, -8em 6em #47a8b5, -7em 6em #47a8b5, -6em 6em #47a8b5,
+        4em 6em #47a8b5, 5em 6em #47a8b5, 6em 6em #47a8b5, 7em 6em #47a8b5,
+        8em 6em #47a8b5, 9em 6em #47a8b5, 10em 6em #47a8b5, 11em 6em #47a8b5,
+        12em 6em #47a8b5, -4em 8em #47a8b5, -3em 8em #47a8b5, -2em 8em #47a8b5,
+        4em 9em #47a8b5, 5em 9em #47a8b5, -6em 10em #47a8b5, -5em 10em #47a8b5,
+        2em 11em #47a8b5, 3em 11em #47a8b5;
+    }
+    60%{
+        box-shadow: -12em 6em #47a8b5, -11em 6em #47a8b5, -10em 6em #47a8b5,
+        -9em 6em #47a8b5, -8em 6em #47a8b5, -7em 6em #47a8b5, -6em 6em #47a8b5,
+        4em 6em #47a8b5, 5em 6em #47a8b5, 6em 6em #47a8b5, 7em 6em #47a8b5,
+        8em 6em #47a8b5, 9em 6em #47a8b5, 10em 6em #47a8b5, 11em 6em #47a8b5,
+        12em 6em #47a8b5, -8em 8em #47a8b5, -7em 8em #47a8b5, -6em 8em #47a8b5,
+        0em 9em #47a8b5, 1em 9em #47a8b5, -10em 10em #47a8b5, -9em 10em #47a8b5,
+        -2em 11em #47a8b5, -1em 11em #47a8b5;
+    }
+    75%{
+        box-shadow: -12em 6em #47a8b5, -11em 6em #47a8b5, -10em 6em #47a8b5,
+        -9em 6em #47a8b5, -8em 6em #47a8b5, -7em 6em #47a8b5, -6em 6em #47a8b5,
+        4em 6em #47a8b5, 5em 6em #47a8b5, 6em 6em #47a8b5, 7em 6em #47a8b5,
+        8em 6em #47a8b5, 9em 6em #47a8b5, 10em 6em #47a8b5, 11em 6em #47a8b5,
+        12em 6em #47a8b5, -12em 8em #47a8b5, -11em 8em #47a8b5, -10em 8em #47a8b5,
+        -4em 9em #47a8b5, -3em 9em #47a8b5, 10em 10em #47a8b5, 11em 10em #47a8b5,
+        -6em 11em #47a8b5, -5em 11em #47a8b5;
+    }
+}
+
+@keyframes Connection-Lost-Dino{
+    0%{
+        box-shadow: 2em -10em #47a8b5, 3em -10em #47a8b5, 4em -10em #47a8b5,
+        5em -10em #47a8b5, 6em -10em #47a8b5, 7em -10em #47a8b5, 8em -10em #47a8b5,
+        9em -10em #47a8b5, 1em -9em #47a8b5, 2em -9em #47a8b5, 4em -9em #47a8b5,
+        5em -9em #47a8b5, 6em -9em #47a8b5, 7em -9em #47a8b5, 8em -9em #47a8b5,
+        9em -9em #47a8b5, 10em -9em #47a8b5, 1em -8em #47a8b5, 2em -8em #47a8b5,
+        3em -8em #47a8b5, 4em -8em #47a8b5, 5em -8em #47a8b5, 6em -8em #47a8b5,
+        7em -8em #47a8b5, 8em -8em #47a8b5, 9em -8em #47a8b5, 10em -8em #47a8b5,
+        1em -7em #47a8b5, 2em -7em #47a8b5, 3em -7em #47a8b5, 4em -7em #47a8b5,
+        5em -7em #47a8b5, 6em -7em #47a8b5, 7em -7em #47a8b5, 8em -7em #47a8b5,
+        9em -7em #47a8b5, 10em -7em #47a8b5, 1em -6em #47a8b5, 2em -6em #47a8b5,
+        3em -6em #47a8b5, 4em -6em #47a8b5, 5em -6em #47a8b5, 6em -6em #47a8b5,
+        7em -6em #47a8b5, 8em -6em #47a8b5, 9em -6em #47a8b5, 10em -6em #47a8b5,
+        1em -5em #47a8b5, 2em -5em #47a8b5, 3em -5em #47a8b5, 4em -5em #47a8b5,
+        5em -5em #47a8b5, 0em -4em #47a8b5, 1em -4em #47a8b5, 2em -4em #47a8b5,
+        3em -4em #47a8b5, 4em -4em #47a8b5, 5em -4em #47a8b5, -9em -3em #47a8b5,
+        -3em -3em #47a8b5, -2em -3em #47a8b5, -1em -3em #47a8b5, 0em -3em #47a8b5,
+        1em -3em #47a8b5, 2em -3em #47a8b5, 3em -3em #47a8b5, 4em -3em #47a8b5,
+        -9em -2em #47a8b5, -2em -2em #47a8b5, -1em -2em #47a8b5, 0em -2em #47a8b5,
+        1em -2em #47a8b5, 2em -2em #47a8b5, 3em -2em #47a8b5, 4em -2em #47a8b5,
+        -9em -1em #47a8b5, -8em -1em #47a8b5, -3em -1em #47a8b5, -2em -1em #47a8b5,
+        -1em -1em #47a8b5, 0em -1em #47a8b5, 1em -1em #47a8b5, 2em -1em #47a8b5,
+        3em -1em #47a8b5, 4em -1em #47a8b5, 5em -1em #47a8b5, 6em -1em #47a8b5,
+        -9em 0em #47a8b5, -8em 0em #47a8b5, -7em 0em #47a8b5, -4em 0em #47a8b5,
+        -3em 0em #47a8b5, -2em 0em #47a8b5, -1em 0em #47a8b5, 0em 0em #47a8b5,
+        1em 0em #47a8b5, 2em 0em #47a8b5, 3em 0em #47a8b5, 4em 0em #47a8b5,
+        6em 0em #47a8b5, -9em 1em #47a8b5, -8em 1em #47a8b5, -7em 1em #47a8b5,
+        -6em 1em #47a8b5, -5em 1em #47a8b5, -4em 1em #47a8b5, -3em 1em #47a8b5,
+        -2em 1em #47a8b5, -1em 1em #47a8b5, 0em 1em #47a8b5, 1em 1em #47a8b5,
+        2em 1em #47a8b5, 3em 1em #47a8b5, 4em 1em #47a8b5, -8em 2em #47a8b5,
+        -7em 2em #47a8b5, -6em 2em #47a8b5, -5em 2em #47a8b5, -4em 2em #47a8b5,
+        -3em 2em #47a8b5, -2em 2em #47a8b5, -1em 2em #47a8b5, 0em 2em #47a8b5,
+        1em 2em #47a8b5, 2em 2em #47a8b5, 3em 2em #47a8b5, 4em 2em #47a8b5,
+        -7em 3em #47a8b5, -6em 3em #47a8b5, -5em 3em #47a8b5, -4em 3em #47a8b5,
+        -3em 3em #47a8b5, -2em 3em #47a8b5, -1em 3em #47a8b5, 0em 3em #47a8b5,
+        1em 3em #47a8b5, 2em 3em #47a8b5, 3em 3em #47a8b5, -6em 4em #47a8b5,
+        -5em 4em #47a8b5, -4em 4em #47a8b5, -3em 4em #47a8b5, -2em 4em #47a8b5,
+        -1em 4em #47a8b5, 0em 4em #47a8b5, 1em 4em #47a8b5, 2em 4em #47a8b5,
+        -5em 5em #47a8b5, -4em 5em #47a8b5, -3em 5em #47a8b5, -2em 5em #47a8b5,
+        -1em 5em #47a8b5, 0em 5em #47a8b5, 1em 5em #47a8b5, -4em 6em #47a8b5,
+        -3em 6em #47a8b5, 0em 6em #47a8b5, 1em 6em #47a8b5, -3em 7em #47a8b5,
+        -2em 7em #47a8b5, 1em 7em #47a8b5, 1em 8em #47a8b5, 1em 9em #47a8b5,
+        2em 9em #47a8b5;
+    }
+    50%{
+        box-shadow: 2em -10em #47a8b5, 3em -10em #47a8b5, 4em -10em #47a8b5,
+        5em -10em #47a8b5, 6em -10em #47a8b5, 7em -10em #47a8b5, 8em -10em #47a8b5,
+        9em -10em #47a8b5, 1em -9em #47a8b5, 2em -9em #47a8b5, 4em -9em #47a8b5,
+        5em -9em #47a8b5, 6em -9em #47a8b5, 7em -9em #47a8b5, 8em -9em #47a8b5,
+        9em -9em #47a8b5, 10em -9em #47a8b5, 1em -8em #47a8b5, 2em -8em #47a8b5,
+        3em -8em #47a8b5, 4em -8em #47a8b5, 5em -8em #47a8b5, 6em -8em #47a8b5,
+        7em -8em #47a8b5, 8em -8em #47a8b5, 9em -8em #47a8b5, 10em -8em #47a8b5,
+        1em -7em #47a8b5, 2em -7em #47a8b5, 3em -7em #47a8b5, 4em -7em #47a8b5,
+        5em -7em #47a8b5, 6em -7em #47a8b5, 7em -7em #47a8b5, 8em -7em #47a8b5,
+        9em -7em #47a8b5, 10em -7em #47a8b5, 1em -6em #47a8b5, 2em -6em #47a8b5,
+        3em -6em #47a8b5, 4em -6em #47a8b5, 5em -6em #47a8b5, 6em -6em #47a8b5,
+        7em -6em #47a8b5, 8em -6em #47a8b5, 9em -6em #47a8b5, 10em -6em #47a8b5,
+        1em -5em #47a8b5, 2em -5em #47a8b5, 3em -5em #47a8b5, 4em -5em #47a8b5,
+        5em -5em #47a8b5, -3em -4em #47a8b5, -2em -4em #47a8b5, 0em -4em #47a8b5,
+        1em -4em #47a8b5, 2em -4em #47a8b5, 3em -4em #47a8b5, 4em -4em #47a8b5,
+        5em -4em #47a8b5, -9em -3em #47a8b5, -2em -3em #47a8b5, -1em -3em #47a8b5,
+        0em -3em #47a8b5, 1em -3em #47a8b5, 2em -3em #47a8b5, 3em -3em #47a8b5,
+        4em -3em #47a8b5, -9em -2em #47a8b5, -2em -2em #47a8b5, -1em -2em #47a8b5,
+        0em -2em #47a8b5, 1em -2em #47a8b5, 2em -2em #47a8b5, 3em -2em #47a8b5,
+        4em -2em #47a8b5, -9em -1em #47a8b5, -8em -1em #47a8b5, -3em -1em #47a8b5,
+        -2em -1em #47a8b5, -1em -1em #47a8b5, 0em -1em #47a8b5, 1em -1em #47a8b5,
+        2em -1em #47a8b5, 3em -1em #47a8b5, 4em -1em #47a8b5, -9em 0em #47a8b5,
+        -8em 0em #47a8b5, -7em 0em #47a8b5, -4em 0em #47a8b5, -3em 0em #47a8b5,
+        -2em 0em #47a8b5, -1em 0em #47a8b5, 0em 0em #47a8b5, 1em 0em #47a8b5,
+        2em 0em #47a8b5, 3em 0em #47a8b5, 4em 0em #47a8b5, 5em 0em #47a8b5,
+        6em 0em #47a8b5, -9em 1em #47a8b5, -8em 1em #47a8b5, -7em 1em #47a8b5,
+        -6em 1em #47a8b5, -5em 1em #47a8b5, -4em 1em #47a8b5, -3em 1em #47a8b5,
+        -2em 1em #47a8b5, -1em 1em #47a8b5, 0em 1em #47a8b5, 1em 1em #47a8b5,
+        2em 1em #47a8b5, 3em 1em #47a8b5, 4em 1em #47a8b5, 6em 1em #47a8b5,
+        -8em 2em #47a8b5, -7em 2em #47a8b5, -6em 2em #47a8b5, -5em 2em #47a8b5,
+        -4em 2em #47a8b5, -3em 2em #47a8b5, -2em 2em #47a8b5, -1em 2em #47a8b5,
+        0em 2em #47a8b5, 1em 2em #47a8b5, 2em 2em #47a8b5, 3em 2em #47a8b5,
+        4em 2em #47a8b5, -7em 3em #47a8b5, -6em 3em #47a8b5, -5em 3em #47a8b5,
+        -4em 3em #47a8b5, -3em 3em #47a8b5, -2em 3em #47a8b5, -1em 3em #47a8b5,
+        0em 3em #47a8b5, 1em 3em #47a8b5, 2em 3em #47a8b5, 3em 3em #47a8b5,
+        -6em 4em #47a8b5, -5em 4em #47a8b5, -4em 4em #47a8b5, -3em 4em #47a8b5,
+        -2em 4em #47a8b5, -1em 4em #47a8b5, 0em 4em #47a8b5, 1em 4em #47a8b5,
+        2em 4em #47a8b5, -5em 5em #47a8b5, -4em 5em #47a8b5, -3em 5em #47a8b5,
+        -2em 5em #47a8b5, -1em 5em #47a8b5, 0em 5em #47a8b5, 1em 5em #47a8b5,
+        -4em 6em #47a8b5, -3em 6em #47a8b5, -2em 6em #47a8b5, 1em 6em #47a8b5,
+        2em 6em #47a8b5, -4em 7em #47a8b5, -3em 7em #47a8b5, -4em 8em #47a8b5,
+        -4em 9em #47a8b5, -3em 9em #47a8b5;
+    }
+}
+
+#Connection-Lost-Main > * {
+    height: 0.5em;
+    position: absolute;
+    left: 50%; 
+    font-size: 7px;
+    top: 50%;
+    width: 0.5em;
+}
+
+#Connection-Lost-Main #Body,
+#Connection-Lost-Main #Eye,
+#Connection-Lost-Main #Mouth{
+    width: 1em;
+    height: 1em;
+}
+
+#Connection-Lost-Main #Body{
+    animation: Connection-Lost-Dino 0.29s both steps(1) infinite;
+}
+
+#Connection-Lost-Main #Eye{
+    animation: Connection-Lost-Eye 4s both steps(1) infinite;
+}
+
+#Connection-Lost-Main #Mouth{
+    animation: Connection-Lost-Mouth 5s both steps(1) infinite;
+}
+
+#Connection-Lost-Main #Mouth{
+    animation: Connection-Lost-Ground 0.6s both steps(1) infinite;
+}
+
+#Connection-Lost-Main #Comets{
+    animation: Connection-Lost-Comets 0.7s both steps(1) infinite;
+}

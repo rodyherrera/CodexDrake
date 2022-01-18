@@ -1,0 +1,54 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+.Dots-Loader{
+	position: relative;
+	width: 120px;
+	height: 120px;
+}
+
+.Dots-Loader span{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: rotate(calc(18deg * var(--Iterator)));
+}
+
+.Dots-Loader span::before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 15px;
+	height: 15px;
+	background: var(--Dots-Loader-Color);
+	border-radius: 50%;
+	transform: scale(0);
+	animation: Dots-Loader-Animation .7s linear infinite;
+	animation-delay: calc(0.1s * var(--Iterator));
+}
+
+@keyframes Dots-Loader-Animation{
+	0%{
+		transform: scale(0);
+	}
+	10%{
+		transform: scale(1.2);
+	}
+	80%, 100%{
+	}
+}

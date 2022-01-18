@@ -1,0 +1,63 @@
+{
+  "dir": "auto",
+  "short_name": "CodexDrake",
+  "name": "CodexDrake - Secure Open Source Search Engine Written In JavaScript.",
+  "lang": "en-US",
+  "description": "Open source, secure and private search engine that you can host on your own servers, written in javascript with fast performance supporting various search categories, search unlimitedly under anonymity!",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#121212",
+  "background_color": "#121212",
+  "icons": [
+    {
+      "src": "Images/Icon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "Images/Apple/57x57.png",
+      "type": "image/png",
+      "sizes": "57x57.png"
+    },
+    {
+      "src": "Images/Apple/72x72.png",
+      "type": "image/png",
+      "sizes": "72x72.png"
+    },
+    {
+      "src": "Images/Apple/76x76.png",
+      "type": "image/png",
+      "sizes": "76x76.png"
+    },
+    {
+      "src": "Images/Apple/114x114.png",
+      "type": "image/png",
+      "sizes": "114x114.png"
+    },
+    {
+      "src": "Images/Apple/120x120.png",
+      "type": "image/png",
+      "sizes": "120x120.png"
+    },
+    {
+      "src": "Images/Apple/144x144.png",
+      "type": "image/png",
+      "sizes": "144x144.png"
+    },
+    {
+      "src": "Images/Apple/152x152.png",
+      "type": "image/png",
+      "sizes": "152x152.png"
+    },
+    {
+      "src": "Images/Apple/180x180.png",
+      "type": "image/png",
+      "sizes": "180x180.png"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web"
+    }
+  ]
+}

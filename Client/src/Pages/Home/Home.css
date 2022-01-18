@@ -1,0 +1,47 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+#Home-Main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: Fade-In 1s;
+}
+
+#Search-Container{
+    width: 100%;
+    text-align: center;
+}
+
+#Search-Container #Search-Bar-Suggestions{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#Search-Container h1{
+    margin-bottom: 1rem;
+    font-size: 4rem;
+}
+
+@media(max-width: 768px){
+    #Search-Container{
+        width: 90%;
+    }
+
+    #Search-Container h1{
+        font-size: 12vw;
+    }
+}

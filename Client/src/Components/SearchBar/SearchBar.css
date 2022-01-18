@@ -1,0 +1,81 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+#Search-Bar-Form-Container{
+    box-shadow: var(--Search-Bar-Box-Shadow);
+    background-color: var(--Search-Bar-Background-Color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    will-change: transform;
+    transition: .5s;
+    border-radius: 2rem 2rem 0 0;
+    padding: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#Search-Bar-Suggestions{
+    background-color: var(--Search-Bar-Background-Color);
+    position: relative;
+    text-align: start;
+    box-shadow: var(--Search-Bar-Box-Shadow);
+    border-radius: 0 0 2rem 2rem;
+    max-width: 700px;
+    z-index: 10;
+    margin-bottom: -20vh;
+}
+
+#Search-Bar-Suggestions ul{
+    max-height: 20vh;
+    overflow-y: scroll;
+}
+
+#Search-Bar-Suggestions > :first-child > li:not(:last-child){
+    margin-bottom: .5rem;
+}
+
+#Search-Bar-Suggestions > :first-child > li{
+    transition: .1s;
+    will-change: transform;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+#Search-Bar-Suggestions > :first-child > :last-child{
+    border-radius: 0 0 2rem 2rem;
+}
+
+#Search-Bar-Suggestions > :first-child > li:hover{
+    background-color: var(--Search-Bar-Suggestion-Hover-Background-Color);
+}
+
+#Search-Bar-Form-Container:hover{
+    box-shadow: var(--Search-Bar-Hover-Box-Shadow);
+}
+
+#Search-Bar-Form-Container > :first-child{
+    width: 95%;
+}
+
+#Search-Bar-Form-Container > :first-child input{
+    width: 100%;
+}
+
+@media(max-width: 1000px){
+    #Search-Bar-Suggestions{
+        max-height: 20vh;
+    }
+}

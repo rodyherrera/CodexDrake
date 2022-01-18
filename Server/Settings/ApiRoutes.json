@@ -1,0 +1,13 @@
+{
+    "Suffix": "/api/v1",
+    "Search": {
+        "Suffix": "/search",
+        "Search": "/",
+        "Images": "/images",
+        "News": "/news",
+        "Videos": "/videos",
+        "Shopping": "/shopping",
+        "Books": "/books",
+        "Suggestions": "/suggestions"
+    }
+}

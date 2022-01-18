@@ -1,0 +1,74 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+.Result{
+    max-width: 700px;
+}
+
+.Result:not(:last-child){
+    margin-bottom: 1.5rem;
+}
+
+.Result a{
+    color: var(--Result-Link-Title-Link-Color);
+}
+
+.Result a:hover{
+    opacity: .9;
+}
+
+.Result .Link{
+    color: var(--Result-Link-Color);
+    margin: .6rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Result .Description{
+    letter-spacing: -0.008em;
+    color: var(--Result-Link-Description-Color);
+}
+
+.Result .Complement{
+    letter-spacing: -0.008em;
+    color: var(--Result-Link-Complement-Color); 
+    margin-top: .4rem;
+}
+
+.Result .Link:hover, .Result .Title:hover{
+    text-decoration: underline;
+}
+
+.Result .Description, .Result .Title, .Result .Complement, .Result .Link{
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+@media(max-width: 768px){
+    .Result{
+        background-color: var(--Result-Background-Color);
+        padding: 1rem;
+        border: 1px solid var(--Result-Border-Color);
+        border-left: none;
+        border-right: none;
+    }
+
+    .Result:not(:last-child){
+        margin-bottom: .7rem;
+    }
+}

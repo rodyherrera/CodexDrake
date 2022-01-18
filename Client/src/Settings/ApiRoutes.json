@@ -1,0 +1,12 @@
+{
+    "Server": "http://192.168.43.141:8000/api/v1",
+    "Search": {
+        "Search": "/search/",
+        "Images": "/search/images/",
+        "News": "/search/news/",
+        "Videos": "/search/videos/",
+        "Shopping": "/search/shopping/",
+        "Books": "/search/books/",
+        "Suggestions": "/search/suggestions/"
+    }
+}

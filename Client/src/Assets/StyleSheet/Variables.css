@@ -1,0 +1,110 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+:root{
+    --Scrollbar-Color: rgb(196, 227, 237) transparent !important;
+    --Scrollbar-Color-Hover: rgb(167, 210, 225);
+    --Body-Background-Color: #EEF2F6;
+    --Hoverable-Color: #464646;
+    --Body-Color: inherit;
+    --Generic-Border-Color: #1d8b99;
+    --Button-Color: #30808a;
+    --Circle-Loader-Color: rgb(24, 100, 201);
+    --Button-Color-Hover: #066774;
+    --Button-Background-Color: inherit;
+    --Button-Background-Color-Active: #d1dfe2;
+    --Button-Background-Color-Hover: #cad6d8;
+    --Dots-Loader-Color: rgb(24, 100, 201);
+    --Header-Background-Color: #FFFFFF;
+    --Search-Bar-Background-Color: #FFFFFF;
+    --Search-Bar-Box-Shadow: 0px 2px 8px rgba(37, 44, 54, 0.076);
+    --Search-Bar-Suggestion-Hover-Background-Color: #ebebeb;
+    --Search-Bar-Hover-Box-Shadow: 0px 2px 8px rgba(37, 44, 54, 0.22);
+    --Result-Link-Color: #006621;
+    --Result-Stats-Color: #666666;
+    --Result-Link-Title-Link-Color: #344bce;
+    --Result-Link-Description-Color: #767676;
+    --Result-Link-Complement-Color: #3c3c3c;
+    --Result-Background-Color: #FFFFFF;
+    --Result-Border-Color: #e9eaeb;
+    --Images-Title-Color: #555555;
+    --Images-Source-Color: #3f3f3f;
+    --Separator-Color: #b6b6b6;
+    --Separator-Border-Color: #DADADA;
+    --Service-Conditions-Background-Color: #FFFFFF;
+    --Service-Conditions-Border-Color: #e9eaeb;
+    --Search-Background-Color: #F2F4F7;
+    --Search-Not-Results-Background-Color: #FFFFFF;
+    --Search-Header-Border-Color: #e9eaeb;
+    --Search-Header-Background-Color: #FFFFFF;
+    --Search-Category-Hover-Background-Color: #f8f8f8;
+    --Search-Category-Active-Border-Color: #4e96a3;
+    --Search-Results-Background-Color: #FFFFFF;
+    --Animated-Text-Colors: linear-gradient(
+        -225deg,
+        #b5e9f0 0%,
+        #2097a7 29%,
+        #47a8b5 67%,
+        #b5e9f0 100%
+    );
+}
+
+[data-Theme='Dark']{
+    --Scrollbar-Color: rgb(196, 227, 237) transparent !important;
+    --Scrollbar-Color-Hover: rgb(167, 210, 225);
+    --Body-Background-Color: rgb(32, 32, 36);
+    --Hoverable-Color: #dddddd;
+    --Generic-Border-Color: #3a3a3a;
+    --Button-Color: #e8e8e8;
+    --Circle-Loader-Color: rgb(24, 100, 201);
+    --Body-Color: rgb(248, 248, 248);
+    --Button-Color-Hover: #e8e8e8;
+    --Button-Background-Color: #313131;
+    --Button-Background-Color-Active: #262626;
+    --Button-Background-Color-Hover: #3d3d3d;
+    --Dots-Loader-Color: rgb(24, 100, 201);
+    --Header-Background-Color: rgb(32, 32, 36);
+    --Search-Bar-Background-Color: #3a3a3a;
+    --Search-Bar-Box-Shadow: 0px 2px 8px rgba(37, 44, 54, 0.076);
+    --Search-Bar-Suggestion-Hover-Background-Color: #505050;
+    --Search-Bar-Hover-Box-Shadow: 0px 2px 8px rgba(37, 44, 54, 0.22);
+    --Result-Link-Color: #bdc1c6;
+    --Result-Stats-Color: #9aa0a6;
+    --Result-Link-Title-Link-Color: #8ab4f8;
+    --Result-Link-Description-Color: #bdc1c6;
+    --Result-Link-Complement-Color: #acafb3;
+    --Result-Background-Color: unset;
+    --Result-Border-Color: unset;
+    --Images-Title-Color: #ababab;
+    --Images-Source-Color: #d1d1d1;
+    --Separator-Color: #b6b6b6;
+    --Separator-Border-Color: #505050;
+    --Service-Conditions-Background-Color: rgb(32, 32, 36);
+    --Service-Conditions-Border-Color: #3a3a3a;
+    --Search-Background-Color: rgb(32, 32, 36);
+    --Search-Not-Results-Background-Color: rgb(32, 32, 36);
+    --Search-Header-Border-Color: #3a3a3a;
+    --Search-Header-Background-Color: rgb(32, 32, 36);
+    --Search-Category-Hover-Background-Color: #3a3a3a;
+    --Search-Category-Active-Border-Color: #4e96a3;
+    --Search-Results-Background-Color: rgb(32, 32, 36);
+    --Animated-Text-Colors: linear-gradient(
+        -225deg,
+        #b5e9f0 0%,
+        #2097a7 29%,
+        #47a8b5 67%,
+        #b5e9f0 100%
+    );
+}

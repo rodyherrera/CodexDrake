@@ -1,0 +1,230 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+#Search-Main{
+    width: 100%;
+    animation: Fade-In 1s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--Search-Background-Color);
+}
+
+#Search-Not-Results{
+    background-color: var(--Search-Not-Results-Background-Color);
+    height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5rem;
+}
+
+#Search-Not-Results ul{
+    padding-left: 3rem;
+    list-style-type: square;
+}
+
+#Search-Not-Results ul li:not(:last-child){
+    margin-bottom: .5rem;
+}
+
+#Search-Not-Results > div{
+    max-width: 1000px;
+}
+
+#Search-Not-Results > div > p{
+    margin: 2rem 0;
+    line-height: 1.3rem;
+}
+
+#Search-Stats{
+    margin-bottom: 1rem;
+    font-size: 1em;
+    color: var(--Result-Stats-Color);
+}
+
+#Search-More-Results-Loader{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+#Search-Loading-Request{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    font-size: .7rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#Search-Header{
+    padding: 1rem;
+    display: flex;
+    border-bottom: 1px solid var(--Search-Header-Border-Color);
+    flex-wrap: wrap;
+    background-color: var(--Search-Header-Background-Color);
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+}
+
+#Search-Header > :first-child{
+    width: 45%;
+}
+
+#Search-Header > :last-child{
+    display: flex;
+}
+
+#Search-Header #Search-Bar-Form-Container{
+    margin: unset;
+}
+
+#Search-Header > :last-child > li{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: .2rem .5rem;
+    transition: .3s;
+    will-change: transform;
+}
+
+#Search-Header > :last-child > li:hover{
+    border-radius: 1rem 0;
+    background-color: var(--Search-Category-Hover-Background-Color);
+}
+
+#Search-Header > :last-child > li > i{
+    margin-right: .5rem;
+    margin-top: .3rem;
+}
+
+#Search-Header > :last-child > li:not(:last-child){
+    margin-right: 1rem;
+}
+
+#Search-Header > :last-child > .Active{
+    border-bottom: 1px solid var(--Search-Category-Active-Border-Color);
+}
+
+#Search-Header > :last-child > .Deactive{
+    opacity: .7;
+}
+
+#Search-Results{
+    background-color: var(--Search-Results-Background-Color);
+    padding: 2rem 6.5rem;
+}
+
+#Search-Results[data-SearchType='IMAGES']{
+    max-width: unset;
+    padding: 0 3rem;
+}
+
+#Search-Load-Results-Btn-Container{
+    text-align: center;
+}
+
+#Search-Load-Results-Btn-Container > button{
+    width: 50%;
+    margin-top: 2rem;
+    border-radius: 1rem;
+}
+
+@media(max-width: 1200px){
+    #Search-Header{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #Search-Header #Search-Bar-Form-Container, #Search-Header #Search-Bar-Suggestion{
+        margin: 0 auto;
+    }
+    
+    #Search-Header > :first-child, #Search-Header > :last-child{
+        width: 100%;
+        justify-content: center;
+    }
+
+    #Search-Results[data-SearchType='IMAGES']{
+        background-color: var(--Search-Results-Background-Color);
+    }
+
+    #Search-Header > :last-child{
+        margin-top: 2rem;
+        overflow-x: scroll;
+    }
+}
+
+@media(max-width: 768px){
+    #Search-Load-Results-Btn-Container > button{
+        width: 100%;
+    }
+
+    #Search-Not-Results{
+        padding: 1rem;
+        justify-content: flex-start;
+        height: auto;
+    }
+
+    #Search-Not-Results button{
+        width: 100%;
+    }
+
+    #Search-Results, #Search-Results[data-SearchType='IMAGES']{
+        margin: 1rem auto;
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    #Search-Load-Results-Btn-Container{
+        padding: 1rem;
+    }
+
+    #Search-Load-Results-Btn-Container > button{
+        margin-top: 1rem;
+    }
+
+    #Search-Stats{
+        display: none;
+    }
+
+    #Search-Results{
+        padding: 0;
+        background-color: unset;
+    }
+
+    #Search-Header{
+        padding-bottom: 0;
+    }
+
+    #Search-Header > :last-child{
+        justify-content: unset;
+        margin-top: .9rem;
+        padding-bottom: 1rem;
+    }
+}
+
+@media(max-width: 330px){
+    #Search-Not-Results ul{
+        padding-left: 1rem;
+    }
+}

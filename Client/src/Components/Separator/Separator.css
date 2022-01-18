@@ -1,0 +1,36 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+.Separator-Container{
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.Separator-Container > :first-child{
+    margin-right: 1rem;
+    color: var(--Separator-Color);
+}
+
+.Separator-Container > :last-child{
+    border: 1px dashed var(--Separator-Border-Color);
+    width: 100%;
+}
+
+@media(max-width: 768px){
+    .Separator-Container{
+        padding: 0 1rem;
+    }
+}

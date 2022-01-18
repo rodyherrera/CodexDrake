@@ -1,0 +1,87 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+#Header{
+    height: 7vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    padding: 2rem 1rem 1.3rem;
+}
+
+#Header #Version a{
+    color: var(--Hoverable-Color);
+    will-change: transform;
+}
+
+#Header #Version a:hover{
+    opacity: .7;
+}
+
+#Header ul{
+    list-style-type: none;
+}
+
+@media(max-width: 300px){
+    #Header nav{
+        flex-direction: column;
+    }
+
+    #Header nav > :first-child{
+        margin-bottom: 1rem;
+    }
+}
+
+#Header:not(#Header[data-Path='/']){
+    background-color: var(--Header-Background-Color);
+}
+
+#Header:not(#Header[data-Path='/']) #Version{
+    display: none;
+}
+
+#Title{
+    display: none;
+}
+
+#Header:not(#Header[data-Path='/']) #Title{
+    display: block;
+}
+
+#Header nav{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#Title{
+    cursor: pointer;
+}
+
+#Title:hover{
+    opacity: .8;
+}
+
+#Header nav > ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#Header nav ul li:not(:last-child){
+    margin-right: 1.5rem;
+}

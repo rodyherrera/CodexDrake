@@ -1,0 +1,229 @@
+/***
+ * Copyright (C) Rodolfo Herrera Hernandez. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root
+ * for full license information.
+ *
+ * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+ *
+ * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ *
+ * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
+ * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ *
+ * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ ****/
+ 
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+
+#Status404-Main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: Fade-In 1s;
+    flex-direction: column;
+}
+
+#Status404-Main section{
+    width: 100%;
+    text-align: center;
+}
+
+#Status404-Main > :last-child{
+    margin-top: 4rem;
+}
+
+#Status404-Main #Small-Screen{
+    display: none;
+}
+
+#Status404-Main #Error-Number{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+#Status404-Main .Number{
+    font-size: 25em;
+    color: #414042;
+}
+
+#Status404-Main #Left-Coffee{
+    margin-right: 2%;
+    z-index: -1;
+}
+
+#Status404-Main #Right-Coffee{
+    margin-left: 2%;
+    z-index: -1;
+}
+
+#Status404-Main #Coffee-Mug{
+    background-color: #3f2616;
+    position: relative;
+    margin: 0;
+    width: 170px;
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #442918, 0 0 0 25px #3c2415, 0 0 0 42px #e4e6b2,
+    0 0 0 65px #eff0d1, 0 120px 0 -25px #3c2415, 100px 70px 0 -25px #3c2415,
+    80px 140px 0 -10px #3c2415, 0px 210px 0 -55px #3c2415,
+    20px 250px 0 -65px #3c2415;
+}
+
+#Status404-Main #Coffee-Mug::before{
+    content: '';
+    position: absolute;
+    background-color: #EFF0D1;
+    height: 80px;
+    width: 60px;
+    top: -85px;
+    right: -75px;
+    border-radius: 5px;
+    box-shadow: inset 0px 50px 0 0px #EFF0D1;
+    transform: rotate(45deg);
+}
+
+#Status404-Main #Coffee-Mug::after{
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    border: 3px solid #77665c;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    opacity: 0.2;
+    animation: Status404-Rings 3s ease-out infinite;
+}
+
+@keyframes Status404-Rings{
+    to{
+        width: 150px;
+        height: 150px;
+        opacity: 0;
+    }
+}
+
+@media(max-width: 758px){
+    #Status404-Main #Coffee-Mug{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 10px #442918, 
+        0 0 0 25px #3c2415, 
+        0 0 0 42px #e4e6b2,
+        0 0 0 65px #eff0d1, 
+        10px 120px 0 -25px #3c2415, 
+        70px 90px 0 -25px #3c2415,
+        50px 120px 0 -10px #3c2415;
+    }
+
+    #Status404-Main .Number{
+        font-size: 22em;
+    }
+
+    @keyframes Status404-Rings{
+        to{
+            width: 50px;
+            height: 50px;
+            opacity: 0;
+        }
+    }
+}
+
+@media(max-width: 550px){
+    #Status404-Main #Coffee-Mug{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 10px #442918, 
+        0 0 0 25px #3c2415, 
+        0 0 0 42px #e4e6b2,
+        0 0 0 65px #eff0d1, 
+        10px 120px 0 -25px #3c2415, 
+        70px 90px 0 -25px #3c2415,
+        50px 120px 0 -10px #3c2415;
+    }
+
+    #Status404-Main .Number{
+        font-size: 17em;
+    }
+}
+
+@media(max-width: 450px){
+    #Status404-Main #Coffee-Mug{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 10px #442918, 
+        0 0 0 25px #3c2415, 
+        0 0 0 42px #e4e6b2,
+        0 0 0 65px #eff0d1;
+    }
+
+    #Status404-Main .Number{
+        font-size: 12em;
+    }
+}
+
+@media(max-width: 350px){
+    #Status404-Main #Coffee-Mug{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 10px #442918, 
+        0 0 0 25px #3c2415, 
+        0 0 0 40px #e4e6b2,
+        0 0 0 55px #eff0d1;
+    }
+
+    #Status404-Main .Number{
+        font-size: 8em;
+    }
+
+    #Status404-Main #Coffee-Mug::after{
+        content: '';
+        width: 20px;
+        height: 20px;
+        left: -3px;
+    }
+
+    #Status404-Main #Coffee-Mug::before{
+        content: '';
+        position: absolute;
+        background-color: #EFF0D1;
+        height: 40px;
+        width: 30px;
+        top: -70px;
+        right: -60px;
+        border-radius: 5px;
+        box-shadow: inset 0px 50px 0 0px #EFF0D1;
+        transform: rotate(45deg);
+    }
+
+    @keyframes Status404-Rings{
+        to{
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+        }
+    }
+}
+
+@media(max-width: 250px){
+    #Status404-Main #Error-Number{
+        display: none;
+    }
+
+    #Small-Screen{
+        display: block;
+        text-align: center;
+        color: #414042;
+        font-size: 5em;
+    }
+}
