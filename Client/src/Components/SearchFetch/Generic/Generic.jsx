@@ -25,7 +25,7 @@ const Generic = ({ Response }) => {
                     {PageIndex + 1 !== 1 && (<Separator Title={PageIndex + 1} />)}
                     {Page.map((Result, ResultIndex) => (
                         <div className='Result' key={ResultIndex}>
-                            <a href={Result.Link}>
+                            <a href={(!Result.Link.startsWith('http') || !Result.Link.startsWith('https')) ? ('http://' + Result.Link) : (Result.Link)}>
                                 <span className='Title'>{Result.Title}</span>
                                 <span className='Link'>{Result.Link}</span>
                             </a>
