@@ -2,6 +2,7 @@
 ##### A simple, fast, secure, private and self-hosted free search engine written in JavaScript.
 
 CodexDrake is an open source search engine that will allow you to browse the internet, find different categories of results such as links, pages, news, images, videos, books and shopping articles, this software is a real-case implementation of a library called like [CDrake-SE](https://github.com/codewithrodi/CDrake-SE/ "CDrake-SE"), the name of this engine means Greed of Results, Codex from Latin is greed and Drake interpreting it knowing that it is an equation that allows finding the number of civilizations in a certain galaxy, this software is safe and private, due because you can host it on your own servers or even have it on your own computer, it is extremely fast and light, totally built in JavaScript, you can have your own search engine without having to pay APIs, nobody will be able to know the things you are looking for on the internet, maybe pretty kittens or pepa pig porn, it's in your hands.
+In the README of the library used for this engine, it is explained that the results obtained depending on the geographic zone in which the server is running will depend, assuming that the server is hosted in Japan, the results of that instance will be different from those of the server hosted in Chile, it is an imbalance, you may not even get results due to problems with scraping, it will be fixed in future versions, for now, this is fine.
 
 ### Features
 - Highly secure
