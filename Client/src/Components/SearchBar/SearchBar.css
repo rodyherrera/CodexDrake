@@ -35,7 +35,7 @@
     border-radius: 0 0 2rem 2rem;
     max-width: 700px;
     z-index: 10;
-    margin-bottom: -20vh;
+    margin: 0 auto -20vh;
 }
 
 #Search-Bar-Suggestions ul{
