@@ -26,7 +26,7 @@ const SearchBar = ({
     const [GetIsComponentMounted, SetIsComponentMounted] = useState(true);
     const [GetSuggestions, SetSuggestions] = useState([]);
     const [GetSelectedSuggestion, SetSelectedSuggestion] = useState([]);
-    const { DoSearchSuggestions } = useContext(CodexDrakeSEContext);
+    const { SearchSET } = useContext(CodexDrakeSEContext);
     // ! Do it better...
     const [GetIsEnabledSuggestions, SetIsEnabledSuggestions] = useState(true);
 
@@ -49,16 +49,9 @@ const SearchBar = ({
             SetSuggestions([]);
             return;
         }
-        DoSearchSuggestions({
-            OnStart: () => {},
-            OnFinish: () => {},
-            Data: { Query: Event.target.value },
-            OnResolve: (Response) => {
-                if(!GetIsComponentMounted)
-                    return;
-                SetSuggestions(Object.keys(Response.Results).map((Key) => Response.Results[Key]));
-            }
-        });
+        SearchSET.Suggestions({ Query: Event.target.value })
+            .then((Response) => (GetIsComponentMounted) && 
+                (SetSuggestions(Object.keys(Response.Results).map((Key) => Response.Results[Key]))));
     };
 
     return (

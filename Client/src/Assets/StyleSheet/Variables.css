@@ -61,7 +61,7 @@
     );
 }
 
-[data-Theme='Dark']{
+[data-theme='Dark']{
     --Scrollbar-Color: rgb(196, 227, 237) transparent !important;
     --Scrollbar-Color-Hover: rgb(167, 210, 225);
     --Body-Background-Color: rgb(32, 32, 36);

@@ -14,39 +14,17 @@
  ****/
 
 import { Search } from '../../Infrastructure';
-import { GenericRequestToBackend, ParseToURLParameters } from '../../Utils/Shortcuts';
+import { GenericRequestToBackend, ParseToURLParameters } from '../../Utilities/Runtime';
 
-export const SearchLinks = (Data) => 
+const GetRequestFrom = (SearchType, Body) => 
     GenericRequestToBackend({
-        Path: Search.Search + ParseToURLParameters(Data),
+        Path: Search[SearchType] + ParseToURLParameters(Body)
     });
 
-export const Images = (Data) =>
-    GenericRequestToBackend({
-        Path: Search.Images + ParseToURLParameters(Data)
-    });
-
-export const News = (Data) =>
-    GenericRequestToBackend({
-        Path: Search.News + ParseToURLParameters(Data)
-    });
-
-export const Videos = (Data) =>
-    GenericRequestToBackend({
-        Path: Search.Videos + ParseToURLParameters(Data)
-    });
-
-export const Shopping = (Data) =>
-    GenericRequestToBackend({
-        Path: Search.Shopping + ParseToURLParameters(Data)
-    });
-
-export const Books = (Data) =>
-    GenericRequestToBackend({
-        Path: Search.Books + ParseToURLParameters(Data)
-    });
-
-export const Suggestions = (Data) =>
-    GenericRequestToBackend({
-        Path: Search.Suggestions + ParseToURLParameters(Data)
-    });
+export const Links = (Body) => GetRequestFrom('Search', Body);
+export const Images = (Body) => GetRequestFrom('Images', Body);
+export const News = (Body) => GetRequestFrom('News', Body);
+export const Videos = (Body) => GetRequestFrom('Videos', Body);
+export const Shopping = (Body) => GetRequestFrom('Shopping', Body);
+export const Books = (Body) => GetRequestFrom('Books', Body);
+export const Suggestions = (Body) => GetRequestFrom('Suggestions', Body);

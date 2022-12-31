@@ -134,7 +134,7 @@
     padding: 2rem 6.5rem;
 }
 
-#Search-Results[data-SearchType='IMAGES']{
+#Search-Results[data-searchtype='images']{
     max-width: unset;
     padding: 0 3rem;
 }
@@ -164,7 +164,7 @@
         justify-content: center;
     }
 
-    #Search-Results[data-SearchType='IMAGES']{
+    #Search-Results[data-searchtype='Images']{
         background-color: var(--Search-Results-Background-Color);
     }
 
@@ -189,7 +189,7 @@
         width: 100%;
     }
 
-    #Search-Results, #Search-Results[data-SearchType='IMAGES']{
+    #Search-Results, #Search-Results[data-searchtype='images']{
         margin: 1rem auto;
         width: 100%;
         padding: 1.5rem;

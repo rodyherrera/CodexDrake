@@ -1,5 +1,5 @@
 {
-    "Server": "https://codewithrodi.com:8000/api/v1",
+    "Server": "https://codexdrake-backend.codewithrodi.com/api/v1/",
     "Search": {
         "Search": "/search/",
         "Images": "/search/images/",

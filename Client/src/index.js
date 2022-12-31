@@ -16,7 +16,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReportWebVitals from './ReportWebVitals';
-import Application from './Utils/Application';
+import Application from './Application';
 import { BrowserRouter } from 'react-router-dom';
 import { CodexDrakeSEProvider } from './Services/CodexDrakeSE/Context';
 import './Assets/StyleSheet/Variables.css';

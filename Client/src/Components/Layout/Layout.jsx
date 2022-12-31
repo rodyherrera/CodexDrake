@@ -44,10 +44,10 @@ const Layout = () => {
         const Document = document.documentElement;
         const ThemeColor = document.querySelector('meta[name="theme-color"]');
         if(GetIsDarkTheme){
-            Document.setAttribute('data-Theme', 'Dark');
+            Document.setAttribute('data-theme', 'Dark');
             ThemeColor.setAttribute('content', 'rgb(32, 32, 36)');
         }else{
-            Document.removeAttribute('data-Theme');
+            Document.removeAttribute('data-theme');
             ThemeColor.setAttribute('content', '#b5e9f0');
         }
     }, [GetIsDarkTheme]); 
@@ -56,7 +56,7 @@ const Layout = () => {
 
     return GetIsConnectionLost ? (<ConnectionLost />) : (
         <>
-            <header data-Path={Location.pathname} id='Header'>
+            <header data-path={Location.pathname} id='Header'>
                 <nav>
                     <ul>
                         <li id='Version'>

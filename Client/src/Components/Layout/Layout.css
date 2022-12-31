@@ -45,11 +45,11 @@
     }
 }
 
-#Header:not(#Header[data-Path='/']){
+#Header:not(#Header[data-path='/']){
     background-color: var(--Header-Background-Color);
 }
 
-#Header:not(#Header[data-Path='/']) #Version{
+#Header:not(#Header[data-path='/']) #Version{
     display: none;
 }
 
@@ -57,7 +57,7 @@
     display: none;
 }
 
-#Header:not(#Header[data-Path='/']) #Title{
+#Header:not(#Header[data-path='/']) #Title{
     display: block;
 }
 

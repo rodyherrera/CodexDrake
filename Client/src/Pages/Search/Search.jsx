@@ -15,7 +15,7 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { CodexDrakeSEContext } from '../../Services/CodexDrakeSE/Context';
-import { GetClientLanguage } from '../../Utils/Shortcuts';
+import { GetClientLanguage } from '../../Utilities/Runtime';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsCollectionPlay, BsTags } from 'react-icons/bs';
@@ -41,43 +41,26 @@ const Search = () => {
     const [GetType, SetType] = useState(GetSearchParams.get('Type') || 'All');
     const [GetIsDoesNotExistsResults, SetIsDoesNotExistsResults] = useState(false);
     const [GetIsMoreResultsLoading, SetIsMoreResultsLoading] = useState(false);
-
-    const { 
-        GetError,
-        DoSearch,
-        DoSearchImages,
-        DoSearchNews,
-        DoSearchVideos,
-        DoSearchShopping,
-        DoSearchBooks } = useContext(CodexDrakeSEContext);
+    const { GetError, SearchSET } = useContext(CodexDrakeSEContext);
     
-    const Searchs = {
-        IMAGES: DoSearchImages,
-        BOOKS: DoSearchBooks,
-        SHOPPING: DoSearchShopping,
-        VIDEOS: DoSearchVideos,
-        NEWS: DoSearchNews
-    };
-
     const Fetchs = {
-        IMAGES: <SearchFetch.Images Response={GetResponse} />,
-        BOOKS: <SearchFetch.Generic Response={GetResponse} />,
-        SHOPPING: <SearchFetch.Generic Response={GetResponse} />,
-        VIDEOS: <SearchFetch.Generic Response={GetResponse} />,
-        NEWS: <SearchFetch.Generic Response={GetResponse} />
+        Images: <SearchFetch.Images Response={GetResponse} />,
+        Books: <SearchFetch.Generic Response={GetResponse} />,
+        Shopping: <SearchFetch.Generic Response={GetResponse} />,
+        Videos: <SearchFetch.Generic Response={GetResponse} />,
+        News: <SearchFetch.Generic Response={GetResponse} />
     };
     
     const Categories = [
-        { Name: 'All', Icon: <AiOutlineSearch /> },
-        { Name: 'Images', Icon: <IoImagesOutline /> },
-        { Name: 'News', Icon: <IoNewspaperOutline /> },
-        { Name: 'Videos', Icon: <BsCollectionPlay /> },
-        { Name: 'Shopping', Icon: <BsTags /> },
-        { Name: 'Books', Icon: <VscNotebook /> }
+        ['All', <AiOutlineSearch />],
+        ['Images', <IoImagesOutline />],
+        ['News', <IoNewspaperOutline />],
+        ['Videos', <BsCollectionPlay />],
+        ['Shopping', <BsTags />],
+        ['Books', <VscNotebook />]
     ];
 
     useEffect(() => {
-        (GetQuery.length) && (HandleSearch());
         return () => {
             SetIsComponentMounted(false);
             SetIsLoading(false);
@@ -91,8 +74,6 @@ const Search = () => {
             SetIsMoreResultsLoading(false);
         };
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    useEffect(() => HandleSearch(), [GetType]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if(!GetQuery.length)
@@ -108,27 +89,29 @@ const Search = () => {
         (Event) && (Event.preventDefault());
         if(!GetQuery.length)
             return;
-        const SearchFunction = Searchs[GetType.toUpperCase()] || DoSearch;
+        const SearchFunction = SearchSET[GetType] || SearchSET.Links;
+        LoadingSetter(true);
         SearchFunction({
-            OnStart: () => LoadingSetter(true),
-            OnFinish: () => LoadingSetter(false),
-            Data: { Query: GetQuery, Language: GetLanguage, Page },
-            OnResolve: (Response) => {
-                if(!GetIsComponentMounted)
-                    return;
-                if(!Object.keys(Response.Results).length){
-                    SetIsDoesNotExistsResults(true);
-                    return;
-                }
-                Response.Results = (GetResponse.Results && GetQueryAux === GetQuery) ? 
-                    ([ ...GetResponse.Results, Response.Results ]) 
-                        : ([ Response.Results  ]);
-                document.title = (GetQuery.length > 16) ? (GetQuery.slice(0, 16) + '...') : GetQuery + ' - CodexDrake Search Engine.';
-                SetPage(Page);
-                SetQueryAux(GetQuery);
-                SetResponse(Response);
+            Query: GetQuery,
+            Language: GetLanguage,
+            Page
+        })
+        .then((Response) => {
+            if(!GetIsComponentMounted)
+                return;
+            if(!Object.keys(Response.Results).length){
+                SetIsDoesNotExistsResults(true);
+                return;
             }
-        });
+            Response.Results = (GetResponse.Results && GetQueryAux === GetQuery) ? 
+                ([ ...GetResponse.Results, Response.Results ]) 
+                    : ([ Response.Results  ]);
+            document.title = (GetQuery.length > 16) ? (GetQuery.slice(0, 16) + '...') : GetQuery + ' - CodexDrake Search Engine.';
+            SetPage(Page);
+            SetQueryAux(GetQuery);
+            SetResponse(Response);
+        })
+        .finally(() => (GetIsComponentMounted) && (LoadingSetter(false)));
     };
 
     return (
@@ -142,7 +125,7 @@ const Search = () => {
                     />
                 </article>
                 <ul>
-                    {Categories.map((Category, Index) => (
+                    {Categories.map(([ Name, Icon ], Index) => (
                         <li 
                             key={Index} 
                             onClick={() => {
@@ -150,12 +133,12 @@ const Search = () => {
                                 SetResponse({});
                                 SetPage(1);
                                 SetIsDoesNotExistsResults(false);
-                                SetType(Category.Name);
+                                SetType(Name);
                             }}
-                            className={(Category.Name.toUpperCase() === GetType.toUpperCase()) ? ('Active') : 'Deactive'}
+                            className={(Name === GetType) ? ('Active') : 'Deactive'}
                         >
-                            <i>{Category.Icon}</i>
-                            <span>{Category.Name}</span>
+                            <i>{Icon}</i>
+                            <span>{Name}</span>
                         </li>
                     ))}
                 </ul>
@@ -198,7 +181,7 @@ const Search = () => {
                     </article>
                 ) : (
                     GetResponse.Results && Object.keys(GetResponse.Results).length && (
-                        <section data-SearchType={GetType.toUpperCase()} id='Search-Results'>
+                        <section data-searchtype={GetType} id='Search-Results'>
                             <article>
                                 <div id='Search-Stats'>
                                     {(GetResponse.TotalIndexedResults && GetResponse.SearchTimeout) ? (
@@ -210,7 +193,7 @@ const Search = () => {
                                     )}
                                 </div>
 
-                                {Fetchs[GetType.toUpperCase()] || <SearchFetch.Generic Response={GetResponse} />}
+                                {Fetchs[GetType] || <SearchFetch.Generic Response={GetResponse} />}
 
                                 {GetIsDoesNotExistsResults ? (
                                     <p>Does not exists results for show.</p>

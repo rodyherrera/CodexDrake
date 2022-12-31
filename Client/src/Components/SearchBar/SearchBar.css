@@ -35,7 +35,7 @@
     border-radius: 0 0 2rem 2rem;
     max-width: 700px;
     z-index: 10;
-    margin: 0 auto -20vh;
+    margin: 0 0 -20vh;
 }
 
 #Search-Bar-Suggestions ul{
@@ -72,6 +72,12 @@
 
 #Search-Bar-Form-Container > :first-child input{
     width: 100%;
+}
+
+@media (max-width: 1200px){
+    #Search-Bar-Suggestions{
+        margin: 0 auto;
+    }
 }
 
 @media(max-width: 1000px){

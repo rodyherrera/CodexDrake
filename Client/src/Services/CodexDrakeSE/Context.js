@@ -14,15 +14,8 @@
  ****/
 
 import React, { createContext, useState } from 'react';
-import { DoServerRequest } from '../../Utils/Shortcuts';
-import { 
-    SearchLinks,
-    Images,
-    News,
-    Videos,
-    Shopping,
-    Books,
-    Suggestions } from './Service';
+import { MakeServerRequest } from '../../Utilities/Runtime';
+import * as Service from './Service';
 
 export const CodexDrakeSEContext = createContext();
 
@@ -30,87 +23,66 @@ export const CodexDrakeSEProvider = ({ children }) => {
     const [GetError, SetError] = useState(null);
     const Setters = { OnErrorSetter: SetError };
 
-    const DoSearch = ({ OnStart, OnFinish, Data, OnResolve, OnRejection }) => 
-        DoServerRequest({
+    const Links = (Body) => 
+        MakeServerRequest({
             Setters,
-            OnFinish,
-            OnStart,
-            Promise: { OnResolve, OnRejection },
             Axios: {
-                Callback: SearchLinks,
-                Arguments: [Data]
+                Callback: Service.Links,
+                Arguments: [Body]
             }
         });
 
-    const DoSearchImages = ({ OnStart, OnFinish, Data, OnResolve, OnRejection }) => 
-        DoServerRequest({
+    const Images = (Body) => 
+        MakeServerRequest({
             Setters,
-            OnStart,
-            OnFinish,
-            Promise: { OnResolve, OnRejection },
             Axios: {
-                Callback: Images,
-                Arguments: [Data]
+                Callback: Service.Images,
+                Arguments: [Body]
             }
         });
 
-    const DoSearchNews = ({ OnStart, OnFinish, Data, OnResolve, OnRejection }) => 
-        DoServerRequest({
+    const News = (Body) => 
+        MakeServerRequest({
             Setters,
-            OnStart,
-            OnFinish,
-            Promise: { OnResolve, OnRejection },
             Axios: {
-                Callback: News,
-                Arguments: [Data]
+                Callback: Service.News,
+                Arguments: [Body]
             }
         });
 
-    const DoSearchVideos = ({ OnStart, OnFinish, Data, OnResolve, OnRejection }) => 
-        DoServerRequest({
+    const Videos = (Body) =>  
+        MakeServerRequest({
             Setters,
-            OnFinish,
-            OnStart,
-            Promise: { OnResolve, OnRejection },
             Axios: {
-                Callback: Videos,
-                Arguments: [Data]
+                Callback: Service.Videos,
+                Arguments: [Body]
             }
         });
     
-    const DoSearchShopping = ({ OnStart, OnFinish, Data, OnResolve, OnRejection }) => 
-        DoServerRequest({
+    const Shopping = (Body) => 
+        MakeServerRequest({
             Setters,
-            OnFinish,
-            OnStart,
-            Promise: { OnResolve, OnRejection },
             Axios: {
-                Callback: Shopping,
-                Arguments: [Data]
+                Callback: Service.Shopping,
+                Arguments: [Body]
             }
         });
 
-    const DoSearchBooks = ({ OnStart, Data, OnFinish, OnResolve, OnRejection }) => 
-        DoServerRequest({
+    const Books = (Body) => 
+        MakeServerRequest({
             Setters,
-            OnStart,
-            OnFinish,
-            Promise: { OnResolve, OnRejection },
             Axios: {
-                Callback: Books,
-                Arguments: [Data]
+                Callback: Service.Books,
+                Arguments: [Body]
             }
         });
     
-    const DoSearchSuggestions = ({ OnStart, OnFinish, Data, OnResolve }) => 
-        DoServerRequest({
+    const Suggestions = (Body) => 
+        MakeServerRequest({
             Setters,
-            OnStart,
-            OnFinish,
-            Promise: { OnResolve },
             Axios: {
-                Callback: Suggestions,
-                Arguments: [Data]
+                Callback: Service.Suggestions,
+                Arguments: [Body]
             }
         });
 
@@ -118,13 +90,15 @@ export const CodexDrakeSEProvider = ({ children }) => {
         <CodexDrakeSEContext.Provider
             value={{
                 GetError,
-                DoSearch,
-                DoSearchImages,
-                DoSearchNews,
-                DoSearchVideos,
-                DoSearchBooks,
-                DoSearchShopping,
-                DoSearchSuggestions
+                SearchSET: {
+                    Links,
+                    Images,
+                    News,
+                    Videos,
+                    Shopping,
+                    Books,
+                    Suggestions
+                }
             }}
         >
             {children}
