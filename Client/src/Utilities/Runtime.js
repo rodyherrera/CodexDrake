@@ -54,6 +54,7 @@ export const GenericRequestToBackend = ({
     Body = {},
     ParseBodyCallback = (Body) => Body
 }) => {
+
     let Arguments = [FormattedRouteAPI(Path)];
     Method = Method.toLowerCase();
     if(['post', 'put', 'patch'].includes(Method))

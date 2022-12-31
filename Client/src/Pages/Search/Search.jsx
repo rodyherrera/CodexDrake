@@ -38,7 +38,7 @@ const Search = () => {
     const [GetQueryAux, SetQueryAux] = useState(GetQuery);
     const [GetLanguage, SetLanguage] = useState(GetSearchParams.get('Language') || GetClientLanguage());
     const [GetPage, SetPage] = useState(GetSearchParams.get('Page') || 1);
-    const [GetType, SetType] = useState(GetSearchParams.get('Type') || 'All');
+    const [GetType, SetType] = useState('');
     const [GetIsDoesNotExistsResults, SetIsDoesNotExistsResults] = useState(false);
     const [GetIsMoreResultsLoading, SetIsMoreResultsLoading] = useState(false);
     const { GetError, SearchSET } = useContext(CodexDrakeSEContext);
@@ -74,6 +74,14 @@ const Search = () => {
             SetIsMoreResultsLoading(false);
         };
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+        if(!GetType.length){
+            SetType(GetSearchParams.get('Type') || 'All');
+            return;
+        }
+        HandleSearch();
+    }, [GetType]);
 
     useEffect(() => {
         if(!GetQuery.length)
