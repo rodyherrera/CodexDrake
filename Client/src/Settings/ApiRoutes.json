@@ -1,5 +1,5 @@
 {
-    "Server": "https://8000-codewithrodi-codexdrake-pvbl5rf82ey.ws-us80.gitpod.io/api/v1",
+    "Server": "https://mail.cgacest.com:6400/api/v1",
     "Search": {
         "Search": "/search/",
         "Images": "/search/images/",
