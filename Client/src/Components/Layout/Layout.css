@@ -80,8 +80,15 @@
 #Header nav > ul{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 #Header nav ul li:not(:last-child){
     margin-right: 1.5rem;
+}
+
+@media screen and (max-width: 768px){
+    #Header nav > ul:nth-child(2){
+        display: none;
+    }
 }

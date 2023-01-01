@@ -22,6 +22,30 @@
     background-color: var(--Search-Background-Color);
 }
 
+#Search-Main #Blob-Box{
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 0;
+    will-change: filter;
+    top: -45rem;
+    filter: blur(34rem);
+}
+
+#Search-Main #Blob-Box img{
+    width: 700px;
+}
+
+[data-theme='Dark'] #Search-Main #Blob-Box{
+    top: -31rem;
+    filter: blur(47rem);
+}
+
+[data-theme='Dark'] #Search-Main #Blob-Box img{
+    width: 500px;
+}
+
 #Search-Not-Results{
     background-color: var(--Search-Not-Results-Background-Color);
     height: 80vh;
@@ -132,11 +156,107 @@
 #Search-Results{
     background-color: var(--Search-Results-Background-Color);
     padding: 2rem 6.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-#Search-Results[data-searchtype='images']{
+#Wikipedia-Box{
+    margin-left: 2rem;
+    background-color: var(--Search-Results-Background-Color);
+    max-width: 400px;
+    border: 1px solid var(--Wikipedia-Border-Color);
+    border-radius: .25rem;
+}
+
+#Wikipedia-Box > div{
+    padding: 1rem;
+}
+
+#Wikipedia-Footer-Box{
+    text-align: center;
+    border-top: 1px solid var(--Wikipedia-Border-Color);
+    padding: .5rem;
+}
+
+#Wikipedia-Header-Box > div{
+    display: flex;
+    height: auto;
+    width: auto;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+#Wikipedia-Header-Box > div > div > :last-child{
+    margin-top: .2rem;
+}
+
+#Wikipedia-Header-Box img{
+    width: 50px;
+    border-radius: .2rem;
+}
+
+#Wikipedia-Header-Box > div{
+    margin-bottom: 1rem;
+}
+
+#Wikipedia-Related-Box{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#Wikipedia-Related-Box > div > :nth-child(2){
+    margin: .4rem 0;
+}
+
+#Wikipedia-Related-Box > div > :first-child{
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+
+#Wikipedia-Related-Box > div > :first-child > :first-child{
+    margin-right: .5rem;
+}
+
+#Wikipedia-Related-Box > div:not(:last-child){
+    margin-bottom: 1rem;
+}
+
+#Wikipedia-Header-Box > div > :last-child,
+#Wikipedia-Related-Box > div > :nth-child(2){
+    opacity: .8;
+}
+
+#Wikipedia-Icon-Box{
+    border: 1px solid var(--Wikipedia-Border-Color);
+    border-left: unset;
+    border-right: unset;
+    padding: .5rem 1rem !important;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+}
+
+#Wikipedia-Box > div:not(:last-child){
+    margin-bottom: 1rem;
+}
+
+#Wikipedia-Icon-Box > *,
+#Wikipedia-Related-Box div > :first-child > *{
+    color: var(--Wikipedia-Icons-Color) !important;
+}
+
+#Search-Results[data-searchtype='Images']{
     max-width: unset;
     padding: 0 3rem;
+}
+
+#Search-Results[data-searchtype='Images'] #Search-Stats{
+    display: none;
 }
 
 #Search-Load-Results-Btn-Container{
@@ -146,7 +266,11 @@
 #Search-Load-Results-Btn-Container > button{
     width: 50%;
     margin-top: 2rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
+}
+
+#Search-Results[data-searchtype='Images']{
+    padding: 2rem 1.5rem;
 }
 
 @media(max-width: 1200px){
@@ -195,12 +319,20 @@
         padding: 1.5rem;
     }
 
+    #Search-Results[data-searchtype='Images'] #Wikipedia-Box{
+        display: none;
+    }
+
     #Search-Load-Results-Btn-Container{
         padding: 1rem;
     }
 
     #Search-Load-Results-Btn-Container > button{
         margin-top: 1rem;
+    }
+
+    #Wikipedia-Related-Box{
+        max-height: 300px;
     }
 
     #Search-Stats{
@@ -210,6 +342,26 @@
     #Search-Results{
         padding: 0;
         background-color: unset;
+        flex-direction: column-reverse;
+    }
+
+    #Search-Results > article{
+        width: 100%;
+    }
+
+    #Wikipedia-Box{
+        width: 100%;
+        border-radius: 0;
+        margin: 0 auto 1rem;
+    }
+
+    [data-theme='Dark'] #Wikipedia-Box{
+        width: calc(100% - 1rem);
+        border-radius: 0.6rem;
+    }
+
+    #Wikipedia-Icon-Box svg{
+        width: 1.2rem;
     }
 
     #Search-Header{

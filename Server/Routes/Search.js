@@ -28,6 +28,7 @@ Router
     .get(SearchRoutes.Videos, SearchHandler('Videos'))
     .get(SearchRoutes.Shopping, SearchHandler('Shopping'))
     .get(SearchRoutes.Books, SearchHandler('Books'))
+    .get(SearchRoutes.Wikipedia, SearchHandler('Wikipedia'))
     .get(SearchRoutes.Suggestions, SearchHandler('Suggest'));
 
 module.exports = Router;

@@ -54,9 +54,16 @@ const SearchBar = ({
                 (SetSuggestions(Object.keys(Response.Results).map((Key) => Response.Results[Key]))));
     };
 
+    const HandleFormSubmit = (Event) => {
+        Event.preventDefault();
+        if(!GetQuery || !GetSelectedSuggestion)
+            return;
+        OnSubmit();
+    };
+
     return (
         <div id='Search-Bar-Container'>
-            <form id='Search-Bar-Form-Container' onSubmit={OnSubmit}>
+            <form id='Search-Bar-Form-Container' onSubmit={HandleFormSubmit}>
                 <article>
                     <input
                         id='Search-Bar-Input'

@@ -14,6 +14,7 @@
  ****/
 
 import React from 'react';
+import { Tooltip } from '@mui/material';
 import './Images.css';
 
 const Images = ({ Response }) => {
@@ -23,9 +24,11 @@ const Images = ({ Response }) => {
                 {Response.Results.map((Page) => (
                     Page.map((Result, ResultIndex) => (
                         <figure key={ResultIndex}>
-                            <a href={Result.Image}>
-                                <img width='100%' src={Result.Image} alt={Result.Title} />
-                            </a>
+                            <Tooltip title={Result.Title} placement='top-start'>
+                                <a href={Result.Image}>
+                                    <img width='100%' src={Result.Image} alt={Result.Title} />
+                                </a>
+                            </Tooltip>
                             <figcaption>
                                 <a className='Title' href={Result.Image}>
                                     <span>{Result.Title}</span>

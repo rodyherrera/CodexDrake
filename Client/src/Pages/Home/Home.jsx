@@ -14,14 +14,29 @@
  ****/
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { ClientRoutes } from '../../Infrastructure';
+import { MdOutlinePrivacyTip } from 'react-icons/md';
+import { IoIosArrowDown } from 'react-icons/io';
+import { BsLightning, BsGithub } from 'react-icons/bs';
+import { IconButton } from '@mui/material';
+import { scroller, Element } from 'react-scroll';
+import BlobDark from '../../Assets/Images/Home/Blob-Dark.png';
+import BlobLight from '../../Assets/Images/Home/Blob-Light.png';
+import SecurityConcept from '../../Assets/Images/Home/Security-Concept.png';
 import SearchBar from '../../Components/SearchBar';
+import Accordion from '../../Components/Accordion';
 import './Home.css';
 
 const Home = () => {
     const [GetQuery, SetQuery] = useState('');
     const Navigate = useNavigate();
+    const [GetIsDarkTheme] = useOutletContext();
+    const Features = [
+        [<MdOutlinePrivacyTip />, 'Your privacity', 'At no time do we capture information from your browser while you browse the internet, we do not collect it, when using our service you browse anonymously and safely.'],
+        [<BsGithub />, 'Open Source', 'CodexDrake has its own philosophy, faithfully governed by the pillars of open source, the software is on GitHub under the MIT license, allowing contributions and use of the source code in third-party applications.'],
+        [<BsLightning />, 'Ridiculously fast', 'You are facing a relatively robust engine which tries to collect information from various search engines at the time of making a request, built on modern technology with which we actively seek to give you the best experience you can get.'],
+    ]
 
     const HandleOnSubmit = (Event = undefined) => {
         (Event) && (Event.preventDefault());
@@ -47,7 +62,49 @@ const Home = () => {
                     SetQuery={SetQuery}
                     OnSubmit={HandleOnSubmit}
                 />
+                <i
+                    id='Arrow-Bounce-Box'
+                    onClick={() => scroller.scrollTo('About-Box', { duration: 300, delay: 0, offset: 100, smooth: true })}>
+                    <IoIosArrowDown />
+                </i>
             </section>
+
+            <aside id='Blob-Box'>
+                <img src={(GetIsDarkTheme) ? (BlobDark) : (BlobLight)} alt='Blob' />
+            </aside>
+
+            <Element name='About-Box' id='About-Box'>
+                <article id='Choose-Box'>
+                    <h3>Why CodexDrake?</h3>
+                    <div>
+                        {Features.map(([ Icon, Title, Content ], Index) => (
+                            <div className='Feature-Box' key={Index}>
+                                <IconButton size='big'>
+                                    {Icon}
+                                </IconButton>
+                                <h3>{Title}</h3>
+                                <p>{Content}</p>
+                            </div>
+                        ))}
+                    </div>
+                </article>
+
+                <figure id='Our-Principles'>
+                    <img src={SecurityConcept} alt='Security Concept Img' />
+                    <figcaption>
+                        <Accordion
+                            Title='The ingenuity and elaborate origin of its name...'
+                            Expanded={true}
+                            Content={`"Codex" - greed for its translation from Latin, while "Drake" - name of the mathematical equation that allows finding the number of civilizations within our galaxy, the Milky Way; CodexDrake does not seek to be interpreted as "Greed for Civilizations", but as "Greed for Results".`}
+                        />
+                        <Accordion
+                            Title='From a corner: Hello world from Chile, Talca.'
+                            Expanded={true}
+                            Content='Lines of code written from one of the corners of South America, emerging ideas directed towards developers from all over the world. This is your open source search engine under MIT license, written with doses of modafinil and caffeine.'
+                        />
+                    </figcaption>
+                </figure>
+            </Element>
         </main>
     );
 };

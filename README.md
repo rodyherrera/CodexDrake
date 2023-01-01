@@ -108,7 +108,7 @@ The 'General.json' file, as explained before, only has values ​​that will be
 ```json
 {
     "Repository": "https://github.com/codewithrodi/CodexDrake/",
-    "Version": "Stable v1.0.0"
+    "Version": "Stable v1.0.1"
 }
 ```
 ### The Setup file

@@ -8,6 +8,7 @@
         "Videos": "/videos",
         "Shopping": "/shopping",
         "Books": "/books",
-        "Suggestions": "/suggestions"
+        "Suggestions": "/suggestions",
+        "Wikipedia": "/wikipedia"
     }
 }

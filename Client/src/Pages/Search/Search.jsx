@@ -18,9 +18,12 @@ import { CodexDrakeSEContext } from '../../Services/CodexDrakeSE/Context';
 import { GetClientLanguage } from '../../Utilities/Runtime';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { BsCollectionPlay, BsTags } from 'react-icons/bs';
+import { BsCollectionPlay, BsTags, BsChatSquareText, BsFilePdf } from 'react-icons/bs';
 import { IoImagesOutline, IoNewspaperOutline } from 'react-icons/io5';
-import { VscNotebook } from 'react-icons/vsc';
+import { VscNotebook, VscPreview, VscSearch } from 'react-icons/vsc';
+import { SiWikipedia } from 'react-icons/si';
+import { FiEdit } from 'react-icons/fi';
+import { IconButton, Tooltip } from '@mui/material';
 import SearchFetch from '../../Components/SearchFetch';
 import SearchBar from '../../Components/SearchBar';
 import Button from '../../Components/Button';
@@ -32,6 +35,8 @@ const Search = () => {
     const Navigate = useNavigate();
     const [GetIsComponentMounted, SetIsComponentMounted] = useState(true);
     const [GetIsLoading, SetIsLoading] = useState(true);
+    const [GetIsWikipediaInformationLoading, SetIsWikipediaInformationLoading] = useState(true);
+    const [GetWikipediaData, SetWikipediaData] = useState({});
     const [GetResponse, SetResponse] = useState({});
     const [GetSearchParams, SetSearchParams] = useSearchParams();
     const [GetQuery, SetQuery] = useState(GetSearchParams.get('Query') || '');
@@ -61,6 +66,8 @@ const Search = () => {
     ];
 
     useEffect(() => {
+        if(!GetQuery.length)
+            Navigate('/');
         return () => {
             SetIsComponentMounted(false);
             SetIsLoading(false);
@@ -70,6 +77,8 @@ const Search = () => {
             SetLanguage('');
             SetPage(1);
             SetType('');
+            SetWikipediaData({});
+            SetIsWikipediaInformationLoading(false);
             SetIsDoesNotExistsResults(false);
             SetIsMoreResultsLoading(false);
         };
@@ -81,7 +90,7 @@ const Search = () => {
             return;
         }
         HandleSearch();
-    }, [GetType]);
+    }, [GetType]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         if(!GetQuery.length)
@@ -93,7 +102,22 @@ const Search = () => {
         SetSearchParams(NewQueryStringParams);
     }, [GetType, GetLanguage, GetQuery, GetPage]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const HandleSearch = (Event = undefined, Page = GetPage, LoadingSetter = SetIsLoading) => {
+    useEffect(() => {
+        SetIsWikipediaInformationLoading(true);
+        SearchSET.Wikipedia({
+            Query: GetQuery,
+            Language: GetLanguage,
+            Page: GetPage
+        })
+        .then((Response) => (GetIsComponentMounted) && SetWikipediaData(Response))
+        .finally(() => (GetIsComponentMounted) && (SetIsWikipediaInformationLoading(false)));
+    }, [GetQueryAux]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const HandleSearch = (
+        Event = undefined, 
+        Page = GetPage,
+        LoadingSetter = SetIsLoading
+    ) => {
         (Event) && (Event.preventDefault());
         if(!GetQuery.length)
             return;
@@ -107,6 +131,7 @@ const Search = () => {
         .then((Response) => {
             if(!GetIsComponentMounted)
                 return;
+            console.log(Response);
             if(!Object.keys(Response.Results).length){
                 SetIsDoesNotExistsResults(true);
                 return;
@@ -114,7 +139,7 @@ const Search = () => {
             Response.Results = (GetResponse.Results && GetQueryAux === GetQuery) ? 
                 ([ ...GetResponse.Results, Response.Results ]) 
                     : ([ Response.Results  ]);
-            document.title = (GetQuery.length > 16) ? (GetQuery.slice(0, 16) + '...') : GetQuery + ' - CodexDrake Search Engine.';
+            document.title = (GetQuery.length > 16) ? (GetQuery.slice(0, 16) + '...') : GetQuery + ' - CodexDrake Search Engine';
             SetPage(Page);
             SetQueryAux(GetQuery);
             SetResponse(Response);
@@ -212,13 +237,77 @@ const Search = () => {
                                         </article>
                                     ) : (
                                         <article id='Search-Load-Results-Btn-Container'>
-                                            <Button 
+                                            <Button
                                                 onClick={(Event) => HandleSearch(Event, parseInt(GetPage) + 1, SetIsMoreResultsLoading)}
                                                 Text='Load more results' />
                                         </article>
                                     )
                                 )}
                             </article>
+                            {((!GetIsWikipediaInformationLoading && Object.keys(GetWikipediaData).length) >= 1) && (
+                                <article id='Wikipedia-Box'>
+                                    <div id='Wikipedia-Header-Box'>
+                                        <div>
+                                            <img src={GetWikipediaData.Thumbnail.Source} alt={GetWikipediaData.Title} />
+                                            <div>
+                                                <h3>{GetWikipediaData.Title}</h3>
+                                                <p>{GetWikipediaData.Description}</p>
+                                            </div>
+                                        </div>
+                                        <p>{GetWikipediaData.Content}</p>
+                                    </div>
+                                    <div id='Wikipedia-Icon-Box'>
+                                        {[
+                                            [GetWikipediaData.AdditionalURLs.Edit, <FiEdit />, 'Edit the content present on the Wikipedia page.'], 
+                                            [GetWikipediaData.PDF, <BsFilePdf />, 'Download the content of the Wikipedia page as a PDF.'],
+                                            [GetWikipediaData.AdditionalURLs.Page, <SiWikipedia />, 'Visit the Wikipedia page that presents the content.'], 
+                                            [GetWikipediaData.AdditionalURLs.Revisions, <VscPreview />, 'Visit the revisions made to this Wikipedia section.'], 
+                                            [GetWikipediaData.AdditionalURLs.Talk, <BsChatSquareText />, 'Visit the talks made in this Wikipedia section.']
+                                        ].map(([ Link, Icon, TooltipTitle ], Index) => (
+                                            <Tooltip title={TooltipTitle} key={Index}>
+                                                <IconButton size='medium' onClick={() => window.open(Link, '_blank')}>
+                                                    {Icon}
+                                                </IconButton>
+                                            </Tooltip>
+                                        ))}
+                                    </div>
+                                    <div id='Wikipedia-Related-Box' className='Colored-Scrollbar'>
+                                        {GetWikipediaData.Related.map(({ Title, Description, Content }, Index) => (
+                                            <div key={Index}>
+                                                <div>
+                                                    <h3>{Title}</h3>
+                                                    <Tooltip title={`Find pages related to "${Title}".`}>
+                                                        <IconButton 
+                                                            size='small' 
+                                                            onClick={() => window.location.href = `/search?Query=${Title}&Type=All`}>
+                                                            <VscSearch />
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                    <Tooltip title={`Find images that are related to "${Title}".`}>
+                                                        <IconButton 
+                                                            size='small'
+                                                            onClick={() => window.location.href = `/search?Query=${Title}&Type=Images`}>
+                                                            <IoImagesOutline />
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                    <Tooltip title={`Find out all the news that is related to "${Title}".`}>
+                                                        <IconButton 
+                                                            size='small'
+                                                            onClick={() => window.location.href = `/search?Query=${Title}&Type=News`}>
+                                                            <IoNewspaperOutline />
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                </div>
+                                                <p>{Description}</p>
+                                                <p>{Content}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div id='Wikipedia-Footer-Box'>
+                                        <p>From Wikipedia, Powered by CodexDrake.</p>
+                                    </div>
+                                </article>
+                            )}
                         </section>
                     ))
                 )}

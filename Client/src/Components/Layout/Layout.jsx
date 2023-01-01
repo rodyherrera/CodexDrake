@@ -24,23 +24,26 @@ import ConnectionLost from '../../Pages/ConnectionLost';
 import './Layout.css';
 
 const Layout = () => {
-    const GetStoredTheme = () => localStorage.getItem('Theme');
-    const SetStoredTheme = (Theme) => localStorage.setItem('Theme', Theme);
+    const GetStoredTheme = () => localStorage.getItem('CDRAKE_THEME');
+    const SetStoredTheme = (Theme) => localStorage.setItem('CDRAKE_THEME', Theme);
     const Navigate = useNavigate();
     const Location = useLocation();
-    const DeviceTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const [GetIsDarkTheme, SetIsDarkTheme] = useState(false);
+    const IsDeviceThemeDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const [GetIsDarkTheme, SetIsDarkTheme] = useState((GetStoredTheme() || (IsDeviceThemeDark ? 'Dark' : 'Light')) === 'Dark');
     const [GetIsConnectionLost, SetIsConnectionLost] = useState(false);
 
     window.addEventListener('offline', () => SetIsConnectionLost(true));
     window.addEventListener('online', () => SetIsConnectionLost(false));
 
     useEffect(() => {
-        SetIsDarkTheme(DeviceTheme || GetStoredTheme() === 'Dark');
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+        return () => {
+            SetIsDarkTheme(false);
+            SetIsConnectionLost(false);
+        };
+    }, []);
 
     useEffect(() => {
-        SetStoredTheme( (GetIsDarkTheme) ? ('Dark') : ('Light') );
+        SetStoredTheme(GetIsDarkTheme ? 'Dark' : 'Light');
         const Document = document.documentElement;
         const ThemeColor = document.querySelector('meta[name="theme-color"]');
         if(GetIsDarkTheme){
@@ -72,6 +75,11 @@ const Layout = () => {
                     </ul>
                     <ul>
                         <li>
+                            <code>Y¿o!ur.. S3c_ur1ty 7´n 0u(r) h,4n/d5.</code>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
                             <i className='Icon-Big'>
                                 {GetIsDarkTheme ? 
                                     <BsSun onClick={() => SetIsDarkTheme(false)} /> 
@@ -87,7 +95,8 @@ const Layout = () => {
                     </ul>
                 </nav>
             </header>
-            <Outlet />
+
+            <Outlet context={[GetIsDarkTheme, SetIsDarkTheme]} />
         </>
     );
 };

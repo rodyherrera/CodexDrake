@@ -14,11 +14,11 @@
  ****/
  
 :root{
-    --Scrollbar-Color: rgb(196, 227, 237) transparent !important;
+    --Scrollbar-Color: rgb(196, 227, 237) !important;
     --Scrollbar-Color-Hover: rgb(167, 210, 225);
     --Body-Background-Color: #EEF2F6;
     --Hoverable-Color: #464646;
-    --Body-Color: inherit;
+    --Body-Color: rgb(20, 20, 20);
     --Generic-Border-Color: #1d8b99;
     --Button-Color: #30808a;
     --Circle-Loader-Color: rgb(24, 100, 201);
@@ -39,7 +39,9 @@
     --Result-Link-Complement-Color: #3c3c3c;
     --Result-Background-Color: #FFFFFF;
     --Result-Border-Color: #e9eaeb;
-    --Images-Title-Color: #555555;
+    --Wikipedia-Border-Color: #e9eaeb;
+    --Principles-Border-Color: #e3e3e3;
+    --Images-Title-Color: #555555; 
     --Images-Source-Color: #3f3f3f;
     --Separator-Color: #b6b6b6;
     --Separator-Border-Color: #DADADA;
@@ -52,6 +54,9 @@
     --Search-Category-Hover-Background-Color: #f8f8f8;
     --Search-Category-Active-Border-Color: #4e96a3;
     --Search-Results-Background-Color: #FFFFFF;
+    --Features-Background-Color: #FFFFFF;
+    --Wikipedia-Icons-Color: #000000;
+    --Features-Icons-Color: #000000;
     --Animated-Text-Colors: linear-gradient(
         -225deg,
         #b5e9f0 0%,
@@ -62,7 +67,7 @@
 }
 
 [data-theme='Dark']{
-    --Scrollbar-Color: rgb(196, 227, 237) transparent !important;
+    --Scrollbar-Color: rgb(196, 227, 237) !important;
     --Scrollbar-Color-Hover: rgb(167, 210, 225);
     --Body-Background-Color: rgb(32, 32, 36);
     --Hoverable-Color: #dddddd;
@@ -72,6 +77,7 @@
     --Body-Color: rgb(248, 248, 248);
     --Button-Color-Hover: #e8e8e8;
     --Button-Background-Color: #313131;
+    --Wikipedia-Icons-Color: #FFFFFF;
     --Button-Background-Color-Active: #262626;
     --Button-Background-Color-Hover: #3d3d3d;
     --Dots-Loader-Color: rgb(24, 100, 201);
@@ -96,6 +102,10 @@
     --Search-Background-Color: rgb(32, 32, 36);
     --Search-Not-Results-Background-Color: rgb(32, 32, 36);
     --Search-Header-Border-Color: #3a3a3a;
+    --Wikipedia-Border-Color: #3a3a3a;
+    --Principles-Border-Color: #3a3a3a;
+    --Features-Icons-Color: #FFFFFF;
+    --Features-Background-Color: rgb(28, 28, 30);
     --Search-Header-Background-Color: rgb(32, 32, 36);
     --Search-Category-Hover-Background-Color: #3a3a3a;
     --Search-Category-Active-Border-Color: #4e96a3;

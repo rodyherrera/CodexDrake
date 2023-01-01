@@ -32,6 +32,15 @@ export const CodexDrakeSEProvider = ({ children }) => {
             }
         });
 
+    const Wikipedia = (Body) =>
+        MakeServerRequest({
+            Setters,
+            Axios: {
+                Callback: Service.Wikipedia,
+                Arguments: [Body]
+            }
+        });
+
     const Images = (Body) => 
         MakeServerRequest({
             Setters,
@@ -97,6 +106,7 @@ export const CodexDrakeSEProvider = ({ children }) => {
                     Videos,
                     Shopping,
                     Books,
+                    Wikipedia,
                     Suggestions
                 }
             }}

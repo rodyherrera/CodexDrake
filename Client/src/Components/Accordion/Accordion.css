@@ -1,0 +1,9 @@
+.Generic-Accordion {
+    box-shadow: none !important;
+    border: none !important;
+    width: 100%;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before{
+    background-color: #f0f0f0 !important;
+}

@@ -28,3 +28,4 @@ export const Videos = (Body) => GetRequestFrom('Videos', Body);
 export const Shopping = (Body) => GetRequestFrom('Shopping', Body);
 export const Books = (Body) => GetRequestFrom('Books', Body);
 export const Suggestions = (Body) => GetRequestFrom('Suggestions', Body);
+export const Wikipedia = (Body) => GetRequestFrom('Wikipedia', Body);
