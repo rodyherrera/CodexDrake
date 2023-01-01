@@ -75,7 +75,7 @@ const Layout = () => {
                     </ul>
                     <ul>
                         <li>
-                            <code>Y¿o!ur.. S3c_ur1ty 7´n 0u(r) h,4n/d5.</code>
+                            <code>1n"nv4!te, cr,ea¡,t¿e 4nd 1nsp7r3</code>
                         </li>
                     </ul>
                     <ul>

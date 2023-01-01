@@ -23,6 +23,12 @@
     background: none;
     text-decoration: none;
     scrollbar-color: var(--Scrollbar-Color);
+    scroll-behavior: smooth;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
 }
 
 p,
