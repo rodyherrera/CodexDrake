@@ -1,5 +1,5 @@
 {
-    "Server": "https://backend.cgacest.com:6400/api/v1",
+    "Server": "https://drakeapi.codewithrodi.com/api/v1",
     "Search": {
         "Search": "/search/",
         "Images": "/search/images/",
