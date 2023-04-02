@@ -161,12 +161,24 @@
     align-items: flex-start;
 }
 
+#Wikipedia-Related-Box div > :first-child > *{
+    font-size: 1rem;
+}
+
 #Wikipedia-Box{
     margin-left: 2rem;
     background-color: var(--Search-Results-Background-Color);
     max-width: 400px;
     border: 1px solid var(--Wikipedia-Border-Color);
     border-radius: .25rem;
+}
+
+#Wikipedia-Icon-Box > *{
+    font-size: 1.2rem;
+}
+
+#Wikipedia-Description{
+    font-size: .8rem;
 }
 
 #Wikipedia-Box > div{
@@ -266,7 +278,6 @@
 #Search-Load-Results-Btn-Container > button{
     width: 50%;
     margin-top: 2rem;
-    border-radius: .5rem;
 }
 
 #Search-Results[data-searchtype='Images']{
@@ -341,7 +352,6 @@
 
     #Search-Results{
         padding: 0;
-        background-color: unset;
         flex-direction: column-reverse;
     }
 

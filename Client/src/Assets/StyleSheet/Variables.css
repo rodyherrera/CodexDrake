@@ -19,8 +19,8 @@
     --Body-Background-Color: #EEF2F6;
     --Hoverable-Color: #464646;
     --Body-Color: rgb(20, 20, 20);
-    --Generic-Border-Color: #1d8b99;
-    --Button-Color: #30808a;
+    --Generic-Border-Color: #371ED8;
+    --Button-Color: #371ED8;
     --Circle-Loader-Color: rgb(24, 100, 201);
     --Button-Color-Hover: #066774;
     --Button-Background-Color: inherit;
@@ -35,7 +35,7 @@
     --Result-Link-Color: #006621;
     --Result-Stats-Color: #666666;
     --Result-Link-Title-Link-Color: #344bce;
-    --Result-Link-Description-Color: #767676;
+    --Result-Link-Description-Color: #282828;
     --Result-Link-Complement-Color: #3c3c3c;
     --Result-Background-Color: #FFFFFF;
     --Result-Border-Color: #e9eaeb;
@@ -47,7 +47,7 @@
     --Separator-Border-Color: #DADADA;
     --Service-Conditions-Background-Color: #FFFFFF;
     --Service-Conditions-Border-Color: #e9eaeb;
-    --Search-Background-Color: #F2F4F7;
+    --Search-Background-Color: #FFFFFF;
     --Search-Not-Results-Background-Color: #FFFFFF;
     --Search-Header-Border-Color: #e9eaeb;
     --Search-Header-Background-Color: #FFFFFF;

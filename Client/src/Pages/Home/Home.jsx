@@ -14,15 +14,13 @@
  ****/
 
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ClientRoutes } from '../../Infrastructure';
 import { MdOutlinePrivacyTip } from 'react-icons/md';
 import { IoIosArrowDown } from 'react-icons/io';
 import { BsLightning, BsGithub } from 'react-icons/bs';
 import { IconButton } from '@mui/material';
 import { scroller, Element } from 'react-scroll';
-import BlobDark from '../../Assets/Images/Home/Blob-Dark.png';
-import BlobLight from '../../Assets/Images/Home/Blob-Light.png';
 import SecurityConcept from '../../Assets/Images/Home/Security-Concept.png';
 import SearchBar from '../../Components/SearchBar';
 import Accordion from '../../Components/Accordion';
@@ -31,7 +29,6 @@ import './Home.css';
 const Home = () => {
     const [GetQuery, SetQuery] = useState('');
     const Navigate = useNavigate();
-    const [GetIsDarkTheme] = useOutletContext();
     const Features = [
         [<MdOutlinePrivacyTip />, 'Your privacity', 'At no time do we capture information from your browser while you browse the internet, we do not collect it, when using our service you browse anonymously and safely.'],
         [<BsGithub />, 'Open Source', 'CodexDrake has its own philosophy, faithfully governed by the pillars of open source, the software is on GitHub under the MIT license, allowing contributions and use of the source code in third-party applications.'],
@@ -68,10 +65,6 @@ const Home = () => {
                     <IoIosArrowDown />
                 </i>
             </section>
-
-            <aside id='Blob-Box'>
-                <img src={(GetIsDarkTheme) ? (BlobDark) : (BlobLight)} alt='Blob' />
-            </aside>
 
             <Element name='About-Box' id='About-Box'>
                 <article id='Choose-Box'>

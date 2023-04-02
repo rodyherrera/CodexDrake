@@ -14,8 +14,6 @@
  ****/
 
 import { FormattedRouteAPI } from '../Infrastructure';
-import { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 const ServerErrors = {};
@@ -75,14 +73,3 @@ export const ParseToURLParameters = (Subject) => {
 export const GetClientLanguage = () => navigator.language || navigator.userLanguage;
 
 export const GetLanguageName = (Language) => (Language.includes('-')) ? (Language.split('-')[0]) : (Language);
-
-export const ScrollToTop = () => {
-    const Location = useLocation();
-    useEffect(() => 
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        }), [Location.pathname]);
-    return <Outlet />;
-};

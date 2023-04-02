@@ -43,7 +43,7 @@ const Search = () => {
     const [GetQueryAux, SetQueryAux] = useState(GetQuery);
     const [GetLanguage, SetLanguage] = useState(GetSearchParams.get('Language') || GetClientLanguage());
     const [GetPage, SetPage] = useState(GetSearchParams.get('Page') || 1);
-    const [GetType, SetType] = useState('');
+    const [GetType, SetType] = useState('All');
     const [GetIsDoesNotExistsResults, SetIsDoesNotExistsResults] = useState(false);
     const [GetIsMoreResultsLoading, SetIsMoreResultsLoading] = useState(false);
     const { GetError, SearchSET } = useContext(CodexDrakeSEContext);
@@ -82,15 +82,15 @@ const Search = () => {
             SetIsDoesNotExistsResults(false);
             SetIsMoreResultsLoading(false);
         };
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, []); 
 
     useEffect(() => {
         if(!GetType.length){
-            SetType(GetSearchParams.get('Type') || 'All');
+            SetType(() => GetSearchParams.get('Type') || 'All');
             return;
         }
-        HandleSearch();
-    }, [GetType]); // eslint-disable-line react-hooks/exhaustive-deps
+        HandleSearch()
+    }, [GetType]);
 
     useEffect(() => {
         if(!GetQuery.length)
@@ -100,7 +100,7 @@ const Search = () => {
         (!NewQueryStringParams.Page) && (NewQueryStringParams.Page = 1);
         (!NewQueryStringParams.Language) && (NewQueryStringParams.Language = 'en-US');
         SetSearchParams(NewQueryStringParams);
-    }, [GetType, GetLanguage, GetQuery, GetPage]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [GetType, GetLanguage, GetQuery, GetPage]); 
 
     useEffect(() => {
         SetIsWikipediaInformationLoading(true);
@@ -111,7 +111,7 @@ const Search = () => {
         })
         .then((Response) => (GetIsComponentMounted) && SetWikipediaData(Response))
         .finally(() => (GetIsComponentMounted) && (SetIsWikipediaInformationLoading(false)));
-    }, [GetQueryAux]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [GetQueryAux]);
 
     const HandleSearch = (
         Event = undefined, 

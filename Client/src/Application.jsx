@@ -15,13 +15,13 @@
 
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { ScrollToTop } from './Utilities/Runtime';
 import { ClientRoutes } from './Infrastructure';
 import Layout from './Components/Layout';
 import Home from './Pages/Home';
 import Search from './Pages/Search';
 import Status404 from './Pages/Status404';
 import ServiceConditions from './Pages/ServiceConditions';
+import ScrollToTop from './Patches/ScrollToTop';
 
 const Application = () => (
     <Routes>

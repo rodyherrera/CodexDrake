@@ -41,8 +41,10 @@ const SearchBar = ({
     }, []);
 
     useEffect(() => {
+        if(!GetSelectedSuggestion)
+            return;
         OnSubmit();
-    }, [GetSelectedSuggestion]);  // eslint-disable-line react-hooks/exhaustive-deps
+    }, [GetSelectedSuggestion]);
 
     const HandleQueryInputKeyUp = (Event) => {
         if(!Event.target.value.length){

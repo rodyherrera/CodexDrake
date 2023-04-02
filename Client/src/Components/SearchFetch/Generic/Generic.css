@@ -14,7 +14,7 @@
  ****/
  
 .Result{
-    max-width: 700px;
+    max-width: 550px;
 }
 
 .Result:not(:last-child){
@@ -32,12 +32,14 @@
 .Result .Link{
     color: var(--Result-Link-Color);
     margin: .6rem 0;
+    font-size: .85rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .Result .Description{
+    font-size: .85rem !important;
     letter-spacing: -0.008em;
     color: var(--Result-Link-Description-Color);
 }
@@ -63,7 +65,6 @@
     .Result{
         background-color: var(--Result-Background-Color);
         padding: 1rem;
-        border: 1px solid var(--Result-Border-Color);
         border-left: none;
         border-right: none;
     }

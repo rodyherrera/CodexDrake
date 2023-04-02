@@ -140,41 +140,7 @@
     color: var(--Body-Color) !important;
 }
 
-#Home-Main #Blob-Box{
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    text-align: center;
-    will-change: filter;
-    filter: blur(28rem);
-    top: -7rem;
-    overflow: hidden;
-}
-
-#Home-Main #Blob-Box img{
-    width: 500px;
-}
-
-[data-theme='Dark'] #Home-Main #Blob-Box img{
-    width: 300px;
-}
-
-[data-theme='Dark'] #Home-Main #Blob-Box{
-    top: -12rem;
-    filter: blur(20rem);
-}
-
 @media(max-width: 768px){
-    #Home-Main #Blob-Box{
-        filter: blur(28rem);
-        top: -7rem;
-    }
-
-    [data-theme='Dark'] #Home-Main #Blob-Box{
-        filter: blur(15rem);
-        top: -12rem;
-    }
-
     #Home-Main #Our-Principles > figcaption{
         width: 100%;
     }
