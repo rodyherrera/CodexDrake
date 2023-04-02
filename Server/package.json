@@ -10,14 +10,12 @@
   "author": "Rodolfo Herrera Hernandez @codewithrodi",
   "license": "MIT",
   "dependencies": {
-    "cdrake-se": "^1.0.5",
+    "cdrake-se": "^1.0.7",
     "cors": "^2.8.5",
     "dotenv": "^11.0.0",
     "express": "^4.17.2",
     "helmet": "^5.0.1",
-    "i": "^0.3.7",
     "nodemon": "^2.0.15",
-    "npm": "^8.3.0",
     "xss-clean": "^0.1.1"
   }
 }
