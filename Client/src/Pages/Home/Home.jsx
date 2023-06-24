@@ -37,6 +37,8 @@ const Home = () => {
 
     const HandleOnSubmit = (Event = undefined) => {
         (Event) && (Event.preventDefault());
+        if(!GetQuery)
+            return;
         Navigate({
             pathname: ClientRoutes.Search,
             search: `?Query=${GetQuery}` 
