@@ -131,7 +131,6 @@ const Search = () => {
         .then((Response) => {
             if(!GetIsComponentMounted)
                 return;
-            console.log(Response);
             if(!Object.keys(Response.Results).length){
                 SetIsDoesNotExistsResults(true);
                 return;
