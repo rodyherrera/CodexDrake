@@ -104,7 +104,7 @@ const Search = () => {
     const HandleWikipediaSearch = async (Query, Language, Page) => {
         SetIsWikipediaInformationLoading(true);
         const WikipediaResponse = await Search.Wikipedia({ Body: { Query, Language, Page } });
-        if(!GetIsComponentMounted)
+        if(!GetIsComponentMounted || WikipediaResponse.Status === 'Error')
             return;
         SetWikipediaData(WikipediaResponse);
         SetIsWikipediaInformationLoading(false);
