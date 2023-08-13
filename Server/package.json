@@ -10,7 +10,7 @@
   "author": "Rodolfo Herrera Hernandez @codewithrodi",
   "license": "MIT",
   "dependencies": {
-    "cdrake-se": "^1.0.8",
+    "cdrake-se": "^1.1.0",
     "cors": "^2.8.5",
     "dotenv": "^11.0.0",
     "express": "^4.17.2",
