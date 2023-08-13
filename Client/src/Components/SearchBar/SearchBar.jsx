@@ -7,27 +7,23 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
 import React, { useContext, useEffect, useState } from 'react';
 import { VscSearch } from 'react-icons/vsc';
 import { CodexDrakeSEContext } from '../../Services/CodexDrakeSE/Context';
 import './SearchBar.css';
 
-const SearchBar = ({ 
-    GetQuery, 
-    SetQuery, 
-    OnSubmit
-}) => {
+const SearchBar = ({ GetQuery, SetQuery, OnSubmit }) => {
+    const { Search } = useContext(CodexDrakeSEContext);
+
     const [GetIsComponentMounted, SetIsComponentMounted] = useState(true);
     const [GetSuggestions, SetSuggestions] = useState([]);
     const [GetSelectedSuggestion, SetSelectedSuggestion] = useState([]);
-    const { SearchSET } = useContext(CodexDrakeSEContext);
-    // ! Do it better...
     const [GetIsEnabledSuggestions, SetIsEnabledSuggestions] = useState(true);
 
     useEffect(() => {
@@ -41,19 +37,18 @@ const SearchBar = ({
     }, []);
 
     useEffect(() => {
-        if(!GetSelectedSuggestion)
+        if(!GetSelectedSuggestion.length)
             return;
         OnSubmit();
     }, [GetSelectedSuggestion]);
 
-    const HandleQueryInputKeyUp = (Event) => {
+    const HandleQueryInputKeyUp = async (Event) => {
         if(!Event.target.value.length){
             SetSuggestions([]);
             return;
         }
-        SearchSET.Suggestions({ Query: Event.target.value })
-            .then((Response) => (GetIsComponentMounted) && 
-                (SetSuggestions(Object.keys(Response.Results).map((Key) => Response.Results[Key]))));
+        const Suggestions = await Search.Suggestions({ Body: { Query: Event.target.value } });
+        (GetIsComponentMounted) && (SetSuggestions(Suggestions.Results));
     };
 
     const HandleFormSubmit = (Event) => {

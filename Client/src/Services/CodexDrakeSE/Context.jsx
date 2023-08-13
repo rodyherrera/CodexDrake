@@ -7,107 +7,40 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
-import React, { createContext, useState } from 'react';
-import { MakeServerRequest } from '../../Utilities/Runtime';
+import React, { createContext, useEffect, useState } from 'react';
 import * as Service from './Service';
 
 export const CodexDrakeSEContext = createContext();
 
 export const CodexDrakeSEProvider = ({ children }) => {
     const [GetError, SetError] = useState(null);
-    const Setters = { OnErrorSetter: SetError };
 
-    const Links = (Body) => 
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.Links,
-                Arguments: [Body]
-            }
-        });
-
-    const Wikipedia = (Body) =>
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.Wikipedia,
-                Arguments: [Body]
-            }
-        });
-
-    const Images = (Body) => 
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.Images,
-                Arguments: [Body]
-            }
-        });
-
-    const News = (Body) => 
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.News,
-                Arguments: [Body]
-            }
-        });
-
-    const Videos = (Body) =>  
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.Videos,
-                Arguments: [Body]
-            }
-        });
-    
-    const Shopping = (Body) => 
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.Shopping,
-                Arguments: [Body]
-            }
-        });
-
-    const Books = (Body) => 
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.Books,
-                Arguments: [Body]
-            }
-        });
-    
-    const Suggestions = (Body) => 
-        MakeServerRequest({
-            Setters,
-            Axios: {
-                Callback: Service.Suggestions,
-                Arguments: [Body]
-            }
-        });
+    useEffect(() => {
+        Service.SearchAPI.BindErrorSetter(SetError);
+        return () => {
+            SetError(null);
+        };
+    }, []);
 
     return (
         <CodexDrakeSEContext.Provider
             value={{
                 GetError,
-                SearchSET: {
-                    Links,
-                    Images,
-                    News,
-                    Videos,
-                    Shopping,
-                    Books,
-                    Wikipedia,
-                    Suggestions
+                Search: {
+                    Links: Service.Links,
+                    Images: Service.Images,
+                    News: Service.News,
+                    Videos: Service.Videos,
+                    Shopping: Service.Shopping,
+                    Books: Service.Books,
+                    Wikipedia: Service.Wikipedia,
+                    Suggestions: Service.Suggestions
                 }
             }}
         >

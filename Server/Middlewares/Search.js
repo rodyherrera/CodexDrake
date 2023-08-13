@@ -7,10 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Backend> - A self-hosted, private and secure search engine.
+ * CodexDrake<Backend> - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
 const CatchAsync = require('../Utils/CatchAsync');
 const RuntimeError = require('../Utils/RuntimeError');

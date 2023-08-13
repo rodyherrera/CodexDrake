@@ -7,25 +7,20 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
-import { Search } from '../../Infrastructure';
-import { GenericRequestToBackend, ParseToURLParameters } from '../../Utilities/Runtime';
+import { StandardizedAPIRequestBuilder } from '../../Utilities/Runtime';
+export const SearchAPI = new StandardizedAPIRequestBuilder({ Endpoint: '/search' });
 
-const GetRequestFrom = (SearchType, Body) => 
-    GenericRequestToBackend({
-        Path: Search[SearchType] + ParseToURLParameters(Body)
-    });
-
-export const Links = (Body) => GetRequestFrom('Search', Body);
-export const Images = (Body) => GetRequestFrom('Images', Body);
-export const News = (Body) => GetRequestFrom('News', Body);
-export const Videos = (Body) => GetRequestFrom('Videos', Body);
-export const Shopping = (Body) => GetRequestFrom('Shopping', Body);
-export const Books = (Body) => GetRequestFrom('Books', Body);
-export const Suggestions = (Body) => GetRequestFrom('Suggestions', Body);
-export const Wikipedia = (Body) => GetRequestFrom('Wikipedia', Body);
+export const Links = SearchAPI.Register({ Path: '/' });
+export const Images = SearchAPI.Register({ Path: '/images' });
+export const News = SearchAPI.Register({ Path: '/news' })
+export const Videos = SearchAPI.Register({ Path: '/videos' });
+export const Shopping = SearchAPI.Register({ Path: '/shopping' });
+export const Books = SearchAPI.Register({ Path: '/books' });
+export const Suggestions = SearchAPI.Register({ Path: '/suggestions' });
+export const Wikipedia = SearchAPI.Register({ Path: '/wikipedia' });

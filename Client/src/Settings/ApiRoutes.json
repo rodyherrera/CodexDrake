@@ -1,5 +1,5 @@
 {
-    "Server": "https://drakeapi.codewithrodi.com/api/v1",
+    "Server": "http://0.0.0.0:8000/api/v1",
     "Search": {
         "Search": "/search/",
         "Images": "/search/images/",

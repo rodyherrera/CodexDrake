@@ -7,11 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router';
@@ -19,7 +19,6 @@ import { FiGithub } from 'react-icons/fi';
 import { BsSun } from 'react-icons/bs';
 import { IoMoonOutline } from 'react-icons/io5';
 import { MdOutlineSecurity } from 'react-icons/md';
-import { ClientRoutes, GeneralSettings } from '../../Infrastructure';
 import ConnectionLost from '../../Pages/ConnectionLost';
 import './Layout.css';
 
@@ -64,8 +63,8 @@ const Layout = () => {
                     <ul>
                         <li id='Version'>
                             <h3>
-                                <a href={GeneralSettings.Repository}>
-                                    <span>{GeneralSettings.Version}</span>
+                                <a href={import.meta.env.VITE_CDRAKE_REPOSITORY}>
+                                    <span>{import.meta.env.VITE_CDRAKE_VERSION}</span>
                                 </a>
                             </h3>
                         </li>
@@ -86,10 +85,10 @@ const Layout = () => {
                                         : <IoMoonOutline onClick={() => SetIsDarkTheme(true)} />}
                             </i>
                         </li>
-                        <li onClick={() => Navigate(ClientRoutes.ServiceConditions)}>
+                        <li onClick={() => Navigate('/service-conditions/')}>
                             <i className='Icon-Big'>{<MdOutlineSecurity />}</i>
                         </li>
-                        <li onClick={() => document.location.href = GeneralSettings.Repository}>
+                        <li onClick={() => document.location.href = import.meta.env.VITE_CDRAKE_REPOSITORY}>
                             <i className='Icon-Big'>{<FiGithub />}</i>
                         </li>
                     </ul>

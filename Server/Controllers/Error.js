@@ -7,11 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Backend> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake<Backend> - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
 const ReportError = (ErrorRaised, Response) => {
     if(process.env.NODE_ENV === 'development')

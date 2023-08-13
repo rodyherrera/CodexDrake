@@ -7,23 +7,20 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ClientRoutes } from '../../Infrastructure';
 import { MdOutlinePrivacyTip } from 'react-icons/md';
 import { IoIosArrowDown } from 'react-icons/io';
 import { BsLightning, BsGithub } from 'react-icons/bs';
 import { IconButton } from '@mui/material';
 import { scroller, Element } from 'react-scroll';
-import SecurityConcept from '../../Assets/Images/Home/Security-Concept.png';
 import SearchBar from '../../Components/SearchBar';
-import Accordion from '../../Components/Accordion';
 import './Home.css';
 
 const Home = () => {
@@ -40,7 +37,7 @@ const Home = () => {
         if(!GetQuery)
             return;
         Navigate({
-            pathname: ClientRoutes.Search,
+            pathname: '/search/',
             search: `?Query=${GetQuery}` 
         });
     };
@@ -83,22 +80,6 @@ const Home = () => {
                         ))}
                     </div>
                 </article>
-
-                <figure id='Our-Principles'>
-                    <img src={SecurityConcept} alt='Security Concept Img' />
-                    <figcaption>
-                        <Accordion
-                            Title='The ingenuity and elaborate origin of its name...'
-                            Expanded={true}
-                            Content={`"Codex" - greed for its translation from Latin, while "Drake" - name of the mathematical equation that allows finding the number of civilizations within our galaxy, the Milky Way; CodexDrake does not seek to be interpreted as "Greed for Civilizations", but as "Greed for Results".`}
-                        />
-                        <Accordion
-                            Title='From a corner: Hello world from Chile, Talca.'
-                            Expanded={true}
-                            Content='Lines of code written from one of the corners of South America, emerging ideas directed towards developers from all over the world. This is your open source search engine under MIT license, written with doses of modafinil and caffeine.'
-                        />
-                    </figcaption>
-                </figure>
             </Element>
         </main>
     );

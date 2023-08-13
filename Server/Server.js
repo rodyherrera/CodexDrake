@@ -7,11 +7,11 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Backend> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake<Backend> - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
 const Express = require('express');
 const DotEnv = require('dotenv');
@@ -29,11 +29,10 @@ process.on('uncaughtException', (ServerRuntimeError) => {
     process.exit(1);
 });
 
-DotEnv.config({ path: './Settings.env' });
+DotEnv.config({ path: './.env' });
 
 const SearchRoutes = require('./Routes/Search');
 const GlobalErrorHandler = require('./Controllers/Error');
-const { Routes } = require('./Settings');
 
 const Application = Express();
 const Port = process.env.SERVER_PORT || 5000;
@@ -44,7 +43,7 @@ Application.use(Helmet());
 Application.use(Express.json({ limit: process.env.BODY_MAX_SIZE }));
 Application.use(XSS());
 
-Application.use(Routes.Suffix + Routes.Search.Suffix, SearchRoutes);
+Application.use('/api/v1/search', SearchRoutes);
 Application.use(GlobalErrorHandler);
 
 var Server = HTTP.createServer;
@@ -61,7 +60,6 @@ Server(Configuration, Application).listen(Port, Hostname, () => {
 });
 
 process.on('unhandledRejection', (ServerRuntimeError) => {
-    const { name, message } = ServerRuntimeError;
     console.log('(CodexDrake) > Exception not detected, please catch the errors to make a correct execution of the software.');
     Server.close(() => process.exit(1));
 });

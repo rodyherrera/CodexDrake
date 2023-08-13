@@ -31,7 +31,7 @@ python3 Setup.py
 # Now you must wait for 'Setup.py' to do its thing, try to accept everything it proposes.
 ```
 ### Applying the necessary configurations to the server
-Inside the folder generated after cloning the repository, you have two folders, one called 'Server' and another 'Client', you must access the Server folder where you will find a file called 'Settings.env', which is the environment file that contains configuration that you must apply in case you want to deploy to production.
+Inside the folder generated after cloning the repository, you have two folders, one called 'Server' and another 'Client', you must access the Server folder where you will find a file called '.env', which is the environment file that contains configuration that you must apply in case you want to deploy to production.
 ```bash
 # The mode in which the server is running, you can select "development" or "production" depending on the circumstances.
 NODE_ENV = production
@@ -64,53 +64,16 @@ SSL_KEY
 # to avoid lagging in the server.
 BODY_MAX_SIZE = 10kb
 ```
-Within the anatomy of the Server folder where you were editing 'Settings.env', you will also find a folder named 'Settings', which contains a file named 'ApiRoutes.json', which has all the routes that It has the API, in case you want to modify the routes you must edit that file, in this way we have everything more controlled when we want to modify things.
-```json
-{
-    "Suffix": "/api/v1",
-    "Search": {
-        "Suffix": "/search",
-        "Search": "/",
-        "Images": "/images",
-        "News": "/news",
-        "Videos": "/videos",
-        "Shopping": "/shopping",
-        "Books": "/books",
-        "Suggestions": "/suggestions"
-    }
-}
-```
+
 ### Configuring the client application
-It is time to configure the React application, within the root of the folder generated at the time of cloning the repository, you will have a folder called "Client", this folder contains the source code of the client application, that is, the source code of the Application built in ReactJS, it is time to configure it, when opening the "Client" folder, you must enter the "src" folder, within this you will find a folder called "Settings", quite similar to what you did in The previous step with the server source code, this Settings folder in the client source code contains 3 files as well, where the first corresponds to "ApiRoutes.json", where all the endpoints or routes where the requests will be made are declared of the API, IT IS IMPORTANT that you edit this file, because in the first lines of the .json you will find the "Server" key where you MUST declare the server address, for example "https://mybackendcutternetserver.com/", or in case you are running the server locally "http://0.0.0.0:8000/", the second file called "ClientRoutes.json" contains all the routes of the React application, when accessing a page in Specifically, the path of said page must be declared in this json, as previously explained, it is much simpler and more readable to edit a .json than to see a .js with a hundred lines of code, finally we have the file called " General.json ", where this file contains general settings that will be used throughout the execution of the React application.
-Next you will be shown the content of "ApiRoutes.json", file that contains all the routes of the server, the endpoints where the requests will be made from the React application, these routes must coincide with the file previously modified in the anatomy of the source code of the server.
-```json
-{
-    "Server": "http://0.0.0.0:8000/api/v1",
-    "Search": {
-        "Search": "/search/",
-        "Images": "/search/images/",
-        "News": "/search/news/",
-        "Videos": "/search/videos/",
-        "Shopping": "/search/shopping/",
-        "Books": "/search/books/",
-        "Suggestions": "/search/suggestions/"
-    }
-}
+Inside the "Client" folder is the source code of the CodexDrake web application, built using ReactJS through Vite. Consider that you must edit the .env file, so that from the web application you can connect correctly to the backend server.
 ```
-Now you will be shown the "ClientRoutes.json" file, which as previously explained contains the routes of the react application, in case you want to modify a route you must modify this .json.
-```json
-{
-    "Search": "/search",
-    "ServiceConditions": "/service-conditions"
-}
+VITE_CDRAKE_REPOSITORY = https://github.com/codewithrodi/CodexDrake/
+VITE_CDRAKE_VERSION = Stable v1.0.2
+VITE_CDRAKE_SERVER_ENDPOINT = http://0.0.0.0:8000/api/v1
 ```
-The 'General.json' file, as explained before, only has values ​​that will be used throughout the application, so as not to modify it in each file, it is better to have it controlled in a .json, then its content will be shown.
-```json
-{
-    "Repository": "https://github.com/codewithrodi/CodexDrake/",
-    "Version": "Stable v1.0.1"
-}
-```
+
+
 ### The Setup file
 Inside the folder that has been generated when the repository is cloned, there is a file called "Setup.py", which allows you to execute several instructions that will save you a little time, then the arguments that this file can receive will be explained to you.
 ```bash
@@ -152,5 +115,3 @@ cd Server && npm run start
 
 ### Future versions and contributions
 CodexDrake together with its engine will continue to be updated, it is open to receiving improvements from the community of developers who are interested in the project, in the same way, we have released the source code so that other developers can learn how this works, so that they can create something better, the point is to have fun and learn.
-
-#### Remember drink water, bby <3

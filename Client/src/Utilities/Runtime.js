@@ -7,67 +7,67 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
-import { FormattedRouteAPI } from '../Infrastructure';
-import axios from 'axios';
+import Axios from 'axios';
 
-const ServerErrors = {};
+export class ServerRequestBuilder{
+    constructor({ SetError }){
+        this.SetError = SetError;
+    };
 
-export const MakeServerRequest = async ({
-    Axios = {
-        Callback: undefined,
-        Arguments: undefined
-    },
-    UpdateState = {
-        Setter: undefined,
-        Callback: undefined
-    },
-    Setters = { OnErrorSetter: undefined },
-}) => new Promise(async (Resolve, Reject) => {
-    let Response;
-    try{
-        Setters.OnErrorSetter(null);
-        Response = (await Axios.Callback(...(Axios.Arguments || []))).data;
-        if(Response.Status !== 'Success')
-            throw new Error(Response.Message);
-        (UpdateState.Callback !== undefined) && (UpdateState.Setter(UpdateState.Callback(Response)));
-        Resolve(Response);
-    }catch(Rejection){
-        Setters.OnErrorSetter(ServerErrors[( 
-            (Rejection?.response?.data?.Message) || (Rejection?.message || 'Unknown Error') 
-        ).replaceAll(' ', '_').toUpperCase()]);
-        Reject(Rejection);
-    }
-    return Response;
-});
-
-export const GenericRequestToBackend = ({
-    Path,
-    Method = 'GET',
-    Body = {},
-    ParseBodyCallback = (Body) => Body
-}) => {
-
-    let Arguments = [FormattedRouteAPI(Path)];
-    Method = Method.toLowerCase();
-    if(['post', 'put', 'patch'].includes(Method))
-        Arguments.push(ParseBodyCallback(Body));
-    return axios[Method](...Arguments);
+    Register = ({ 
+        Callback = undefined, 
+        Arguments = undefined, 
+        UpdateState = { Setter: undefined, Callback: undefined } 
+    }) => new Promise(async (Resolve, Reject) => {
+        try{
+            const Response = (await Callback(...(Arguments || [])));
+            (UpdateState.Callback) && (UpdateState.Setter(UpdateState.Callback(Response?.data || Response)));
+            Resolve(Response?.data || Response);
+        }catch(Rejection){
+            (this.SetError) && 
+                (this.SetError(Rejection?.response?.data));
+            Reject(Rejection?.response?.data);
+        }
+        return Response;
+    });
 };
 
-export const ParseToURLParameters = (Subject) => {
-    // ! If subject is object
-    // ! ?Name=Rodolfo&Age=16 => { Name: 'Rodolfo', Age: 16 }
-    // ! If subject is array
-    // ! /Hello/World/ => ['Hello', 'World']
-    let URL = '?';
-    Object.keys(Subject).forEach((Key) => URL += Key + '=' + Subject[Key] + '&');
-    return URL;
+export class StandardizedAPIRequestBuilder{
+    constructor({ Endpoint }){
+        this.Endpoint = Endpoint;
+        this.SetError = () => {};
+    };
+
+    BindErrorSetter = (Setter) => this.SetError = Setter;
+
+    Register = ({ Path, Method = 'GET' }) => {
+        const Buffer = { Arguments: [], Method: Method.toLowerCase() };
+        return ({
+            Body,
+            UpdateState = { Setter: undefined, Callback: undefined }
+        }) => {
+            let QueryParams = '';
+            const AppendParameter = (Identifier, Value) => {
+                (QueryParams +=  ((!QueryParams) ? (`?`) : ('&')) + `${Identifier}=${Value}`);
+            };
+            (Buffer.Method === 'get' && Body) && (Object.keys(Body).forEach((Key) => AppendParameter(Key, Body[Key])));
+            const Endpoint = `${import.meta.env.VITE_CDRAKE_SERVER_ENDPOINT + this.Endpoint}${Path}`.concat(QueryParams);
+            Buffer.Arguments = [Endpoint]
+            if(['post', 'put', 'patch'].includes(Buffer.Method))
+                Buffer.Arguments.push(Body);
+            return new ServerRequestBuilder({ SetError: this.SetError }).Register({
+                Callback: Axios[Buffer.Method],
+                Arguments: Buffer.Arguments,
+                UpdateState
+            });
+        };
+    };
 };
 
 export const GetClientLanguage = () => navigator.language || navigator.userLanguage;

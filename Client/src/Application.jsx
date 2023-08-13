@@ -7,15 +7,14 @@
  *
  * For related information - https://github.com/CodeWithRodi/CodexDrake/
  *
- * CodexDrake<Front> - A self-hosted optimized search engine built in JavaScript, safe 
- * and private, who is Google?, Bing?, Yahoo?, Qwant?, shut up and drink water :).
+ * CodexDrake - Self-hosted search engine written entirely in JavaScript.
+ * Browse privately and securely for free!
  *
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
- ****/
+****/
 
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { ClientRoutes } from './Infrastructure';
 import Layout from './Components/Layout';
 import Home from './Pages/Home';
 import Search from './Pages/Search';
@@ -28,8 +27,8 @@ const Application = () => (
         <Route element={<ScrollToTop />}>
             <Route element={<Layout />}>
                 <Route path='/' exact element={<Home />} />
-                <Route path={ClientRoutes.Search} exact element={<Search />} />
-                <Route path={ClientRoutes.ServiceConditions} exact element={<ServiceConditions />} />
+                <Route path='/search/' exact element={<Search />} />
+                <Route path='/service-conditions/' exact element={<ServiceConditions />} />
             </Route>
             <Route path='*' element={<Status404 />} />
         </Route>
