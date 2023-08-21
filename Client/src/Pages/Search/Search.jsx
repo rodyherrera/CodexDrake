@@ -121,9 +121,9 @@ const Search = () => {
         });
         if(!GetIsComponentMounted)
             return;
-        if(!Object.keys(SearchResponse.Results).length){
+        if(!SearchResponse.Results.length){
             SetIsDoesNotExistsResults(true);
-            return;
+            return LoadingSetter(false);
         }
         SearchResponse.Results = (GetResponse.Results && GetQueryAux === GetQuery) 
             ? ([ ...GetResponse.Results, SearchResponse.Results ])
