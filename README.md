@@ -1,26 +1,44 @@
-# CodexDrake Search Engine
-##### A simple, fast, secure, private and self-hosted free search engine written in JavaScript.
+# The Privacy-First Search Engine
+CodexDrake is an open source search engine, which allows you to browse the Internet safely and anonymously, finding a diversity of results based on different categories such as: Images, News, Internet Sites, Books, among others...
+<br /> <br />
+<a href="https://ko-fi.com/codewithrodi"> 
+    <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="200" alt="Donate - Contribute" />
+</a>
 
-CodexDrake is an open source search engine that will allow you to browse the internet, find different categories of results such as links, pages, news, images, videos, books and shopping articles, this software is a real-case implementation of a library called like [CDrake-SE](https://github.com/codewithrodi/CDrake-SE/ "CDrake-SE"), the name of this engine means Greed of Results, Codex from Latin is greed and Drake interpreting it knowing that it is an equation that allows finding the number of civilizations in a certain galaxy, this software is safe and private, due because you can host it on your own servers or even have it on your own computer, it is extremely fast and light, totally built in JavaScript, you can have your own search engine without having to pay APIs, nobody will be able to know the things you are looking for on the internet, maybe pretty kittens or pepa pig porn, it's in your hands.
-In the README of the library used for this engine, it is explained that the results obtained depending on the geographic zone in which the server is running will depend, assuming that the server is hosted in Japan, the results of that instance will be different from those of the server hosted in Chile, it is an imbalance, you may not even get results due to problems with scraping, it will be fixed in future versions, for now, this is fine.
+<br /> <br />
+The software is mostly written in JavaScript, using NodeJS as the backend and Vite + React on the frontend. Inside the backend, the "cdrake-se" library published by NPM is used, which in simple terms allows you to embed the search engine that makes this software possible to any application you have.
 
-### Features
-- Highly secure
-- Firewall for XSS attacks
-- Helmet for secure HTTP Headers
-- Cors integration
-- Manager to facilitate tasks
-- Responsive
-- No fees or subscriptions
-- Specific actions handled, lost connection or server crash...
-- Small animations to soften the user's view
-- Easy-to-use architectures
+<a href='https://www.npmjs.com/package/cdrake-se'>Go to "cdrake-se" package in NPM.</a>
+
+Within the library, a wide variety of search engines are used to be able to solve the requests made, among them: Google, Bing, Yahoo, Ask, Qwant, Youtube, among others... In addition, it allows you to find suggestions according to a term delivered and perform searches on Wikipedia.
+
+![CodexDrake Desktop Search Presentation](/Screenshots/Desktop-Search.png)
+
+Consider that 'cdrake-se' is not exempt from an HTTP 429 (Too Many Requests) error, which can be caused if a large number of requests are made in a relatively short amount of time. However, when using the automatic search (you can learn more about this in the library's documentation), "Promise.any" is used, which translates to something like "Of all the requests made to the search engines to solve the query, the one that finishes first will be the one that will be returned.
+." That is, taking into account the variety of search engines that integrates the library, if any error of any kind occurs, including HTTP 429, it will not be a problem since there will be other engines that do return a response. The aforementioned concept is what makes the search engine fast and efficient to a large extent.
+
+As for the name "CodexDrake", it has its meaning from behind, the interpretation of the name is "Greed of Results", Codex from Latin is greed and Drake interpreting it knowing that it is an equation that allows finding the number of civilizations in a certain galaxy. (I think I'm not crazy).
+
+The software is designed so that it can be self-hosted on any server that you prepare for it, it has support for you to deploy with Docker or performing manual installation, I mean, install the npm modules of both the client and the server and then give an npm run start... you know.
+
+As mentioned in the library that allows the operation of this software 'cdrake-se', the results of the searches will depend on the geographical area where the server is located. As of the time I write this, I have the instance deployed on a server in Germany. Keep in mind that if you deploy the software locally on your computer and, for example, you are in a different country like Chile, the results will be different. I think this is related to  the corresponding search engines and the way the backend service works, I guess they take the IP, extract the country and return a response accordingly to the country context.
+
+![CodexDrake Desktop Image Search Presentation](/Screenshots/Desktop-Image-Search.png)
+
+### Some Features You might Consider:
+- Safe and friendly with your data
+- Responsive Web UI
+- No fees or subscriptions (No paid APIs)
+- Rich user experience
+- Easy-to-use architecture
 - Ridiculously fast
-- Built without design libraries
 - Dark mode and light mode
+- Docker support
 
-### Installation
-The installation of this software is simple, it can take you less than 10 minutes to have your own search engine running on your computer, it's amazing, incredible, let's get to it, you just have to follow certain instructions, commands that you have to execute in your terminal, for Please follow the instructions step by step so that you do not have any problem installing this software.
+## Deploying Your Instance
+There are two ways to deploy your instance, manually or through Docker.
+Both are relatively simple, below we will deploy manually, just a couple of commands in the terminal will suffice.
+
 ```bash
 # Cloning the repository
 git clone https://github.com/codewithrodi/CodexDrake/
@@ -29,89 +47,71 @@ cd CodexDrake
 # Initializing the Server and Client Setup using the 'Setup.py' file which will be explained later
 python3 Setup.py
 # Now you must wait for 'Setup.py' to do its thing, try to accept everything it proposes.
+
+# Start Web UI
+cd Client && npm run dev
+# Start Backend Server
+cd Server && npm run start
 ```
-### Applying the necessary configurations to the server
-Inside the folder generated after cloning the repository, you have two folders, one called 'Server' and another 'Client', you must access the Server folder where you will find a file called '.env', which is the environment file that contains configuration that you must apply in case you want to deploy to production.
+
+#### Using Docker 
 ```bash
-# The mode in which the server is running, you can select "development" or "production" depending on the circumstances.
-NODE_ENV = production
-
-# CORS origin configuration
-CORS_ORIGIN = *
-
-# Indicate the port on which your server will be running, by default 
-# this port is assigned at 8000, if you remove it the server will start 
-# running on port 5000, you choose the port by changing the value of "SERVER_PORT"
-SERVER_PORT = 8000
-
-# It indicates the address in which the server will run, by default it 
-# is assigned in 0.0.0.0, making reference to where it will run on the server's 
-# base network, it is recommended that you do not change this
-SERVER_HOST = 0.0.0.0
-
-# If you want the server using SSL, you must complete these two 
-# fields, it will automatically start using SSL, the first variable 
-# called "SSL_CERT" must contain the path of where your certificate
-# is located, for example "MyCert.pem", while the other variable 
-# called "SSL_KEY" must contain the path where your key is located, for 
-# example "MyKey.pem", once this is done your server should start in 
-# the port indicated with SSL.
-SSL_CERT = 
-SSL_KEY
-
-# Here you indicate the maximum amount of weight that can be received 
-# when data is sent to the server, it is advisable to have this low 
-# to avoid lagging in the server.
-BODY_MAX_SIZE = 10kb
+# Cloning the repository
+git clone https://github.com/codewithrodi/CodexDrake/
+# Accessing the generated folder
+cd CodexDrake
+# Running docker
+docker compose up -d
 ```
 
-### Configuring the client application
-Inside the "Client" folder is the source code of the CodexDrake web application, built using ReactJS through Vite. Consider that you must edit the .env file, so that from the web application you can connect correctly to the backend server.
-```
+## Environment Files: Web UI and Backend.
+The ".env" environment files do not have much science behind them, inside the "Server/" folder there is the ".env" file which contains definitions used when executing it, some such as SSL certificates or the address in the server network they are declared there. In this section I will focus on showing you what really matters, and that is linking the client application with the server. The server environment file is quite descriptive in terms of variable nomenclature, in addition to having comments, despite the fact that nothing should be taken for granted, there is no need to explain that file to you, you will understand on your own.
+
+Inside the "Client/" folder, where the Vite + React application is located, there is a file called ".env", where you must pay attention to the variable "VITE_CDRAKE_SERVER_ENDPOINT" whose value must be the endpoint of the backend server of your instance , by default this is http://0.0.0.0:8000, but it can be for example http://backend.mycodexdrakeinstance.com.
+
+```env
+# <Client/.env> 
 VITE_CDRAKE_REPOSITORY = https://github.com/codewithrodi/CodexDrake/
-VITE_CDRAKE_VERSION = Stable v1.0.2
+VITE_CDRAKE_VERSION = Stable v1.0.3
 VITE_CDRAKE_SERVER_ENDPOINT = http://0.0.0.0:8000/api/v1
 ```
 
+Consider adding /api/v1 to your endpoint.
 
-### The Setup file
+### The Software Setup File
 Inside the folder that has been generated when the repository is cloned, there is a file called "Setup.py", which allows you to execute several instructions that will save you a little time, then the arguments that this file can receive will be explained to you.
 ```bash
 # Inside the folder generated when cloning the repository.
 # (( /CodexDrake/ )
 
-# It will automatically install the "node_modules" of the server and client applications.
+# Automatically install the "node_modules" of the server and client applications.
 python3 Setup.py
 
-# It will remove the "node_modules" for the client and server application.
+# Remove the "node_modules" for the client and server application.
 python3 Setup.py DeleteModules
 
-# It will remove only the "node_modules" from the client application.
+# Remove only the "node_modules" from the client application.
 python3 Setup.py DeleteClientModules
 
-# It will remove only the "node_modules" from the server application.
+# Remove only the "node_modules" from the server application.
 python3 Setup.py DeleteServerModules
 
-# It will remove all source code from the server application.
+# Remove all source code from the server application.
 python3 Setup.py DeleteServerSource
 
-# It will remove all source code from the client application.
+# Remove all source code from the client application.
 python3 Setup.py DeleteClientSource
 ```
-### Running the servers
-Once you have configured everything, especially the server endpoint in the api routes within the React application, it is time to start the servers, you can do it from the 'Setup.py', or manually, then we will do it the manually.
-```bash
-# Inside the folder generated when cloning the repository.
-# Terminal <1>
-# (( /CodexDrake/ )
-cd Client && npm run start
-```
-```bash
-# Inside the folder generated when cloning the repository.
-# Terminal <2>
-# (( /CodexDrake/ )
-cd Server && npm run start
-```
 
-### Future versions and contributions
-CodexDrake together with its engine will continue to be updated, it is open to receiving improvements from the community of developers who are interested in the project, in the same way, we have released the source code so that other developers can learn how this works, so that they can create something better, the point is to have fun and learn.
+## Software under MIT license
+The MIT license (Massachusetts Institute of Technology License) is a permissive open source software license. It allows developers to use, modify, distribute and sublicense the software without material restrictions. The MIT license is characterized by its simplicity and does not impose many legal restrictions on users.
+
+Break and learn from the software, extract pieces from it and build better things. Good luck!
+
+[Website](https://www.codewithrodi.com)
+<br />
+[NPM](https://www.npmjs.com/~codewithrodi)
+<br />
+[Codepen](https://codepen.io/codewithrodi)
+<br />
+[Github](https://github.com/codewithrodi/)

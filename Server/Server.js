@@ -59,7 +59,7 @@ Server(Configuration, Application).listen(Port, Hostname, () => {
     console.log(`(CodexDrake) > The server was started successfully in the network address (${Hostname}:${Port})`);
 });
 
-process.on('unhandledRejection', (ServerRuntimeError) => {
+process.on('unhandledRejection', () => {
     console.log('(CodexDrake) > Exception not detected, please catch the errors to make a correct execution of the software.');
     Server.close(() => process.exit(1));
 });
