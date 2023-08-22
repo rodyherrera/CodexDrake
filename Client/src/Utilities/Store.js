@@ -13,6 +13,13 @@
  * =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 ****/
 
-import SearchBar from './SearchBar';
+import { configureStore } from '@reduxjs/toolkit';
+import SearchReducer from '../Services/CodexDrakeSE/Slice';
 
-export default SearchBar;
+const Store = configureStore({
+    reducer: {
+        Search: SearchReducer
+    }
+});
+
+export default Store;

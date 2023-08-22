@@ -14,10 +14,13 @@
 ****/
 
 import React from 'react';
-import Separator from '../../Separator';
+import Separator from '../../../Separator';
+import { useSelector } from 'react-redux';
 import './Generic.css';
 
-const Generic = ({ Response }) => {
+const Generic = () => {
+    const Response = useSelector((State) => State.Search.Response);
+
     return (
         <section>
             {Response.Results.map((Page, PageIndex) => (

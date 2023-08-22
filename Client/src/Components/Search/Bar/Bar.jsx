@@ -15,11 +15,16 @@
 
 import React, { useContext, useEffect, useState } from 'react';
 import { VscSearch } from 'react-icons/vsc';
-import { CodexDrakeSEContext } from '../../Services/CodexDrakeSE/Context';
-import './SearchBar.css';
+import { CodexDrakeSEContext } from '../../../Services/CodexDrakeSE/Context';
+import { useSelector, useDispatch } from 'react-redux';
+import { SetSearchParams } from '../../../Services/CodexDrakeSE/Slice';
+import './Bar.css';
 
-const SearchBar = ({ GetQuery, SetQuery, OnSubmit }) => {
-    const { Search } = useContext(CodexDrakeSEContext);
+const SearchBar = () => {
+    const Query = useSelector((State) => State.Search.Query);
+    const Dispatch = useDispatch();
+
+    const { Search, PerformSearch } = useContext(CodexDrakeSEContext);
 
     const [GetIsComponentMounted, SetIsComponentMounted] = useState(true);
     const [GetSuggestions, SetSuggestions] = useState([]);
@@ -39,7 +44,7 @@ const SearchBar = ({ GetQuery, SetQuery, OnSubmit }) => {
     useEffect(() => {
         if(!GetSelectedSuggestion.length)
             return;
-        OnSubmit();
+        PerformSearch();
     }, [GetSelectedSuggestion]);
 
     const HandleQueryInputKeyUp = async (Event) => {
@@ -53,9 +58,9 @@ const SearchBar = ({ GetQuery, SetQuery, OnSubmit }) => {
 
     const HandleFormSubmit = (Event) => {
         Event.preventDefault();
-        if(!GetQuery || !GetSelectedSuggestion)
+        if(!Query || !GetSelectedSuggestion)
             return;
-        OnSubmit();
+        PerformSearch();
     };
 
     return (
@@ -68,8 +73,8 @@ const SearchBar = ({ GetQuery, SetQuery, OnSubmit }) => {
                         placeholder='Search something...'
                         onFocus={() => SetIsEnabledSuggestions(true)}
                         onKeyUp={HandleQueryInputKeyUp}
-                        onChange={(Event) => SetQuery(Event.target.value)}
-                        value={GetQuery}
+                        onChange={(Event) => Dispatch(SetSearchParams({ Query: Event.target.value }))}
+                        value={Query}
                     />
                 </article>
                 <article>
@@ -84,7 +89,7 @@ const SearchBar = ({ GetQuery, SetQuery, OnSubmit }) => {
                         {GetSuggestions.map((Suggestion, Index) => (
                             <li onClick={() => {
                                 SetSelectedSuggestion(Suggestion);
-                                SetQuery(Suggestion);
+                                Dispatch(SetSearchParams({ Query: Suggestion }));
                                 SetSuggestions([]);
                             }} key={Index}>
                                 <span>{Suggestion}</span>

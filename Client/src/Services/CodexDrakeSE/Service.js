@@ -24,3 +24,9 @@ export const Shopping = SearchAPI.Register({ Path: '/shopping' });
 export const Books = SearchAPI.Register({ Path: '/books' });
 export const Suggestions = SearchAPI.Register({ Path: '/suggestions' });
 export const Wikipedia = SearchAPI.Register({ Path: '/wikipedia' });
+
+export const UpdateWindowTitleByQuery = (Query) => {
+    document.title = (Query.length > 16) 
+        ? (Query.slice(0, 16) + '...')
+        : (Query + ' | Your Private Search Engine - CodexDrake.   ');
+};

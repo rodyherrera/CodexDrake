@@ -22,12 +22,10 @@ export class ServerRequestBuilder{
 
     Register = ({ 
         Callback = undefined, 
-        Arguments = undefined, 
-        UpdateState = { Setter: undefined, Callback: undefined } 
+        Arguments = undefined
     }) => new Promise(async (Resolve, Reject) => {
         try{
             const Response = (await Callback(...(Arguments || [])));
-            (UpdateState.Callback) && (UpdateState.Setter(UpdateState.Callback(Response?.data || Response)));
             Resolve(Response?.data || Response);
         }catch(Rejection){
             (this.SetError) && 
@@ -48,23 +46,22 @@ export class StandardizedAPIRequestBuilder{
 
     Register = ({ Path, Method = 'GET' }) => {
         const Buffer = { Arguments: [], Method: Method.toLowerCase() };
-        return ({
-            Body,
-            UpdateState = { Setter: undefined, Callback: undefined }
-        }) => {
+        return ({ Body }) => {
             let QueryParams = '';
             const AppendParameter = (Identifier, Value) => {
                 (QueryParams +=  ((!QueryParams) ? (`?`) : ('&')) + `${Identifier}=${Value}`);
             };
-            (Buffer.Method === 'get' && Body) && (Object.keys(Body).forEach((Key) => AppendParameter(Key, Body[Key])));
+            if(Buffer.Method === 'get' && Body){
+                const Keys = Object.keys(Body);
+                Keys.forEach((Key) => AppendParameter(Key, Body[Key]));
+            }
             const Endpoint = `${import.meta.env.VITE_CDRAKE_SERVER_ENDPOINT + this.Endpoint}${Path}`.concat(QueryParams);
             Buffer.Arguments = [Endpoint]
             if(['post', 'put', 'patch'].includes(Buffer.Method))
                 Buffer.Arguments.push(Body);
             return new ServerRequestBuilder({ SetError: this.SetError }).Register({
                 Callback: Axios[Buffer.Method],
-                Arguments: Buffer.Arguments,
-                UpdateState
+                Arguments: Buffer.Arguments
             });
         };
     };

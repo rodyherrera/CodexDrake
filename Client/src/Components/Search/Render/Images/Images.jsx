@@ -15,9 +15,12 @@
 
 import React from 'react';
 import { Tooltip } from '@mui/material';
+import { useSelector } from 'react-redux';
 import './Images.css';
 
-const Images = ({ Response }) => {
+const Images = () => {
+    const Response = useSelector((State) => State.Search.Response);
+
     return (
         <section id='Search-Images-Container'>
             <article>
