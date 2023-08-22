@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  codexdrake-server:
+    build:
+      context: ./Server
+      dockerfile: Dockerfile
+    image: codexdrake/server
+    container_name: codexdrake-server
+    volumes:
+      - ./Server/:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '8000:8000'
+    env_file: ./Server/.env
+    environment:
+      - NODE_ENV=development
+    networks:
+      - codexdrake-network
+      
+  codexdrake-client:
+    build:
+      context: ./Client
+      dockerfile: Dockerfile
+    image: codexdrake/client
+    container_name: codexdrake-client
+    volumes:
+      - ./Client/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - codexdrake-server
+    ports:
+      - '5173:80'
+    networks:
+      - codexdrake-network
+
+networks:
+    codexdrake-network:
+        driver: bridge
+
+volumes:
+    data-volume:
+    node_modules:
+    web-root:
+      driver: local
