@@ -5,7 +5,7 @@
  *
  * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
  *
- * For related information - https://github.com/CodeWithRodi/CodexDrake/
+ * For related information - https://github.com/rodyherrera/CodexDrake/
  *
  * CodexDrake - Self-hosted search engine written entirely in JavaScript.
  * Browse privately and securely for free!

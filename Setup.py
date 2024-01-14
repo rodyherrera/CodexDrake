@@ -5,7 +5,7 @@
 # *
 # * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 # *
-# * For related information - https://github.com/CodeWithRodi/CodexDrake/
+# * For related information - https://github.com/rodyherrera/CodexDrake/
 # *
 # * This "Setup.py" file is not optimized or designed to function optimally, it 
 # * does not have refactored code nor is it written in the best way with good 
@@ -172,9 +172,9 @@ try:
             ArgumentsExecutables[Argument.lower()]()
 
     print(f'''\
- >>> [Website] https://codewithrodi.com/
- >>> [Source Code] https://github.com/CodeWithRodi/CodexDrake/
- >>> [Email] contact@codewithrodi.com
+ >>> [Website] https://rodyherrera.com/
+ >>> [Source Code] https://github.com/rodyherrera/CodexDrake/
+ >>> [Email] contact@rodyherrera.com
 
  :-: It has been detected that you are using <{kOperativeSystem}>, you are 
  :-: executing the CodexDrake Setup, you have a detailed explanation 
@@ -222,9 +222,9 @@ try:
  :-: where the client will be running on the port "3000" and the 
  :-: server at "8000", success!
 
- >>> [Website] https://codewithrodi.com/
- >>> [Source Code] https://github.com/CodeWithRodi/CodexDrake/
- >>> [Email] contact@codewithrodi.com
+ >>> [Website] https://rodyherrera.com/
+ >>> [Source Code] https://github.com/rodyherrera/CodexDrake/
+ >>> [Email] contact@rodyherrera.com
     ''')
 
 except KeyboardInterrupt:

@@ -7,7 +7,7 @@
     "start": "node Server.js",
     "dev": "nodemon Server.js"
   },
-  "author": "Rodolfo Herrera Hernandez @codewithrodi",
+  "author": "Rodolfo Herrera Hernandez @rodyherrera",
   "license": "MIT",
   "dependencies": {
     "cdrake-se": "^1.1.2",

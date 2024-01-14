@@ -1,7 +1,7 @@
 # The Privacy-First Search Engine
 CodexDrake is an open source search engine, which allows you to browse the Internet safely and anonymously, finding a diversity of results based on different categories such as: Images, News, Internet Sites, Books, among others...
 <br /> <br />
-<a href="https://ko-fi.com/codewithrodi"> 
+<a href="https://ko-fi.com/codewithrodi/"> 
     <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="200" alt="Donate - Contribute" />
 </a>
 
@@ -41,7 +41,7 @@ Both are relatively simple, below we will deploy manually, just a couple of comm
 
 ```bash
 # Cloning the repository
-git clone https://github.com/codewithrodi/CodexDrake/
+git clone https://github.com/rodyherrera/CodexDrake/
 # Accessing the generated folder
 cd CodexDrake
 # Initializing the Server and Client Setup using the 'Setup.py' file which will be explained later
@@ -57,7 +57,7 @@ cd Server && npm run start
 #### Using Docker 
 ```bash
 # Cloning the repository
-git clone https://github.com/codewithrodi/CodexDrake/
+git clone https://github.com/rodyherrera/CodexDrake/
 # Accessing the generated folder
 cd CodexDrake
 # Running docker
@@ -71,7 +71,7 @@ Inside the "Client/" folder, where the Vite + React application is located, ther
 
 ```env
 # <Client/.env> 
-VITE_CDRAKE_REPOSITORY = https://github.com/codewithrodi/CodexDrake/
+VITE_CDRAKE_REPOSITORY = https://github.com/rodyherrera/CodexDrake/
 VITE_CDRAKE_VERSION = Stable v1.0.3
 VITE_CDRAKE_SERVER_ENDPOINT = http://0.0.0.0:8000/api/v1
 ```
@@ -108,10 +108,10 @@ The MIT license (Massachusetts Institute of Technology License) is a permissive 
 
 Break and learn from the software, extract pieces from it and build better things. Good luck!
 
-[Website](https://www.codewithrodi.com)
+[Website](https://www.rodyherrera.com)
 <br />
-[NPM](https://www.npmjs.com/~codewithrodi)
+[NPM](https://www.npmjs.com/~rodyherrera)
 <br />
-[Codepen](https://codepen.io/codewithrodi)
+[Codepen](https://codepen.io/rodyherrera)
 <br />
-[Github](https://github.com/codewithrodi/)
+[Github](https://github.com/rodyherrera/)
