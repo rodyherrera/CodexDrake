@@ -110,7 +110,7 @@ Break and learn from the software, extract pieces from it and build better thing
 
 [Website](https://www.rodyherrera.com)
 <br />
-[NPM](https://www.npmjs.com/~rodyherrera)
+[NPM](https://www.npmjs.com/~codewithrodi)
 <br />
 [Codepen](https://codepen.io/rodyherrera)
 <br />
